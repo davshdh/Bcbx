@@ -34,12 +34,10 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 0, 128, 0.1);
             overflow: hidden;
-            position: relative;
         }
 
         .image-section {
             padding: 40px 20px 20px;
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.03), transparent);
             text-align: center;
         }
 
@@ -77,39 +75,47 @@
             font-weight: 900;
             margin: 0 0 30px;
             letter-spacing: -1.5px;
-            line-height: 1;
         }
 
-        /* TLUSTÝ A PROPRACCOVANÝ PROGRESS BAR */
+        /* EXTRA TLUSTÝ PROGRESS BOX */
         .progress-box {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 25px;
-            border-radius: 30px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 30px 25px;
+            border-radius: 35px;
             border: 1px solid rgba(255, 255, 255, 0.05);
             margin-bottom: 30px;
         }
 
         .bar-container {
             width: 100%;
-            height: 28px; /* Pořádně tlustý bar */
-            background: #1a1a2e;
+            height: 35px; /* Extra tloušťka */
+            background: #000000;
             border-radius: 50px;
-            padding: 6px;
+            padding: 5px;
             box-sizing: border-box;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: inset 0 2px 10px rgba(0,0,0,0.8);
-            margin-bottom: 20px;
-            position: relative;
+            box-shadow: inset 0 2px 15px rgba(0,0,0,1);
+            margin-bottom: 25px;
+            overflow: hidden;
         }
 
         .bar-fill {
-            width: 0%; /* ZMĚNIT PRO PROGRESS */
+            /* TADY NASTAVUJEŠ PROCENTA - teď je tam 10% aby to bylo hned vidět */
+            width: 10%; 
             height: 100%;
             background: linear-gradient(90deg, var(--accent-pink), #ff4d94);
             border-radius: 50px;
-            box-shadow: 0 0 20px rgba(255, 0, 128, 0.6), inset 0 0 8px rgba(255,255,255,0.4);
-            transition: width 1.5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+            box-shadow: 0 0 25px rgba(255, 0, 128, 0.8), inset 0 0 10px rgba(255,255,255,0.4);
+            transition: width 1.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
             position: relative;
+        }
+
+        /* Animovaný odlesk pro "tekutý" vzhled */
+        .bar-fill::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(rgba(255,255,255,0.2) 0%, transparent 50%, rgba(0,0,0,0.2) 100%);
         }
 
         .stats-grid {
@@ -127,18 +133,19 @@
 
         .stat-value {
             display: block;
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 900;
             color: #fff;
             line-height: 1;
+            text-shadow: 0 0 10px rgba(255,255,255,0.2);
         }
 
         .stat-label {
-            font-size: 12px;
+            font-size: 13px;
             color: var(--text-dim);
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-top: 5px;
+            margin-top: 8px;
             display: block;
         }
 
@@ -155,7 +162,7 @@
             color: #000;
             text-decoration: none;
             font-weight: 900;
-            font-size: 19px;
+            font-size: 20px;
             padding: 22px;
             border-radius: 20px;
             transition: all 0.3s ease;
@@ -163,12 +170,13 @@
         }
 
         .btn-action:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(255, 0, 128, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 0, 128, 0.3);
+            background: #f8f8f8;
         }
 
         .footer {
-            margin-top: 25px;
+            margin-top: 30px;
             font-size: 11px;
             color: #44445a;
             letter-spacing: 1px;
@@ -179,5 +187,44 @@
 
 <div class="card">
     <div class="image-section">
-        <img src="https://i.ibb.co/d4D4HCr4/a-But-I-need-it-to-be.
+        <img src="https://i.ibb.co/d4D4HCr4/a-But-I-need-it-to-be.png" alt="Buzz Ball">
+    </div>
+
+    <div class="content">
+        <div class="badge">Liquid Evolution</div>
+        
+        <h1>Fill the Buzz Ball.</h1>
+        
+        <div class="progress-box">
+            <div class="bar-container">
+                <div class="bar-fill" style="width: 10%;"></div>
+            </div>
             
+            <div class="stats-grid">
+                <div class="stat-group">
+                    <span class="stat-value">0€</span>
+                    <span class="stat-label">Raised</span>
+                </div>
+                <div class="stat-group right">
+                    <span class="stat-value">5€</span>
+                    <span class="stat-label">Goal (0%)</span>
+                </div>
+            </div>
+        </div>
+
+        <p class="desc">
+            Let's be real. Help me fill this <strong>Buzz Ball</strong> to the top. Every contribution counts.
+        </p>
+
+        <a href="https://paypal.me/Davisoppxx" class="btn-action">
+            Support the Goal
+        </a>
+
+        <div class="footer">
+            DIRECT VIA PAYPAL • 100% TRANSPARENCY
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
