@@ -9,7 +9,6 @@
             --bg-deep: #05050a;
             --accent-pink: #ff0080;
             --accent-purple: #7928ca;
-            --accent-blue: #00d2ff;
             --text-white: #ffffff;
         }
 
@@ -17,13 +16,12 @@
             background-color: var(--bg-deep);
             background: radial-gradient(circle at center, #1e1e3f 0%, #05050a 100%);
             color: var(--text-white);
-            font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', sans-serif;
             margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            overflow-x: hidden;
         }
 
         .card {
@@ -32,45 +30,25 @@
             background: linear-gradient(145deg, #16162d, #0b0b18);
             border-radius: 45px;
             border: 2px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.9), 
-                        0 0 40px rgba(255, 0, 128, 0.15);
+            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.9);
             overflow: hidden;
-            position: relative;
-            z-index: 1;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 150px;
-            height: 150px;
-            background: var(--accent-pink);
-            filter: blur(80px);
-            opacity: 0.2;
-            z-index: -1;
+            text-align: center;
+            padding-bottom: 40px;
         }
 
         .image-section {
-            padding: 45px 20px 15px;
-            text-align: center;
+            padding: 40px 20px 10px;
         }
 
         .image-section img {
-            width: 85%;
-            filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.8));
+            width: 80%;
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.8));
             animation: float 5s ease-in-out infinite;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-15px) scale(1.02); }
-        }
-
-        .content {
-            padding: 10px 35px 45px;
-            text-align: center;
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         .badge {
@@ -81,24 +59,67 @@
             font-size: 11px;
             font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 2.5px;
-            margin-bottom: 25px;
-            box-shadow: 0 5px 20px rgba(255, 0, 128, 0.4);
+            letter-spacing: 2px;
+            margin-bottom: 20px;
         }
 
         h1 {
-            font-size: 40px;
+            font-size: 38px;
             font-weight: 900;
-            margin: 0 0 30px;
-            letter-spacing: -1.5px;
-            background: linear-gradient(to bottom, #fff 60%, #888);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            margin: 0 0 25px;
         }
 
         .progress-box {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(0, 0, 0, 0.4);
             padding: 25px;
             border-radius: 35px;
-            border: 1px solid rgba(255,
-                                   
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin: 0 30px 30px;
+        }
+
+        .bar-container {
+            width: 100%;
+            height: 35px;
+            background: #000;
+            border-radius: 50px;
+            padding: 5px;
+            box-sizing: border-box;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .bar-fill {
+            /* Zde nastavuješ šířku progressu */
+            width: 0%; 
+            min-width: 18px; /* Zajišťuje, aby bar nezmizel při 0% */
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-pink), var(--accent-purple));
+            border-radius: 50px;
+            box-shadow: 0 0 20px rgba(255, 0, 128, 0.8);
+        }
+
+        .stats-grid {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 900;
+            color: #fff;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--accent-pink);
+            text-transform: uppercase;
+            font-weight: 800;
+            display: block;
+        }
+
+        .desc {
+            color: #ffffff;
+            font-size: 16px;
+            line-height:
+                
