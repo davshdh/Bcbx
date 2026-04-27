@@ -11,6 +11,7 @@
             --accent-purple: #7928ca;
             --text-main: #ffffff;
             --text-dim: #9ca3af;
+            --bar-bg: rgba(255, 255, 255, 0.05);
         }
 
         body {
@@ -28,27 +29,29 @@
         .card {
             width: 90%;
             max-width: 400px;
-            background: rgba(15, 15, 25, 0.9);
+            background: rgba(20, 20, 35, 0.9);
             border-radius: 32px;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.05);
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             text-align: center;
+            padding-bottom: 20px;
         }
 
         .image-container {
             width: 100%;
             padding-top: 40px;
+            margin-bottom: 10px;
         }
 
         .image-container img {
-            width: 90%; /* Zvětšený obrázek */
+            width: 85%;
             height: auto;
-            filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.6));
+            filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.5));
         }
 
         .content {
-            padding: 32px 24px;
+            padding: 20px 30px;
         }
 
         .badge {
@@ -69,64 +72,65 @@
             font-weight: 800;
             margin: 0 0 24px 0;
             letter-spacing: -1px;
-            line-height: 1.1;
         }
 
-        /* PROGRESS BAR PODLE VZORU */
-        .progress-section {
+        /* ČISTÝ PROGRESS BAR PODLE VZORU */
+        .progress-container {
             margin-bottom: 30px;
-            padding: 0 10px;
         }
 
         .progress-track {
             width: 100%;
-            height: 3px; /* Tenká linka jako na vzoru */
-            background: rgba(255, 255, 255, 0.1);
+            height: 6px;
+            background: var(--bar-bg);
             border-radius: 10px;
-            position: relative;
             margin-bottom: 12px;
+            overflow: hidden;
         }
 
         .progress-fill {
-            width: 0%; /* Změň podle aktuálního stavu */
+            width: 0%; /* Tady měníš procenta */
             height: 100%;
-            background: linear-gradient(90deg, var(--accent-pink), var(--accent-purple));
+            background: rgba(255, 255, 255, 0.15); /* Jemná šedá/bílá podle vzoru */
             border-radius: 10px;
-            position: relative;
+            transition: width 1s ease;
         }
 
-        /* Puntík na konci lišty */
-        .progress-fill::after {
-            content: '';
-            position: absolute;
-            right: -4px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 10px;
-            height: 10px;
-            background: #ffffff;
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--accent-pink);
-        }
-
-        .progress-labels {
+        .progress-details {
             display: flex;
             justify-content: space-between;
-            font-size: 14px;
-            font-weight: 700;
+            align-items: flex-start;
         }
 
-        .raised { color: #ffffff; }
-        .goal { color: var(--accent-pink); }
+        .detail-item {
+            text-align: left;
+        }
+
+        .detail-item.right {
+            text-align: right;
+        }
+
+        .amount {
+            display: block;
+            font-size: 20px;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .label {
+            display: block;
+            font-size: 12px;
+            color: var(--text-dim);
+            margin-top: 2px;
+        }
 
         p {
             color: var(--text-dim);
             font-size: 15px;
             line-height: 1.6;
-            margin-bottom: 30px;
+            margin: 25px 0;
+            text-align: center;
         }
-
-        p strong { color: white; }
 
         .btn-paypal {
             display: block;
@@ -135,22 +139,21 @@
             text-decoration: none;
             font-weight: 700;
             font-size: 18px;
-            padding: 18px;
-            border-radius: 16px;
-            transition: transform 0.2s ease, opacity 0.2s ease;
-            margin-bottom: 12px;
+            padding: 16px;
+            border-radius: 14px;
+            transition: transform 0.2s ease;
+            margin-bottom: 15px;
         }
 
         .btn-paypal:hover {
-            opacity: 0.9;
-            transform: translateY(-2px);
+            transform: scale(1.02);
         }
 
         .footer-text {
-            font-size: 11px;
+            font-size: 10px;
             color: #4b5563;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
         }
     </style>
 </head>
@@ -166,13 +169,19 @@
         
         <h1>Fill the Buzz Ball.</h1>
         
-        <div class="progress-section">
+        <div class="progress-container">
             <div class="progress-track">
                 <div class="progress-fill" style="width: 0%;"></div>
             </div>
-            <div class="progress-labels">
-                <span class="raised">0€ raised</span>
-                <span class="goal">Goal: 5€</span>
+            <div class="progress-details">
+                <div class="detail-item">
+                    <span class="amount">0€</span>
+                    <span class="label">raised</span>
+                </div>
+                <div class="detail-item right">
+                    <span class="amount">5€</span>
+                    <span class="label">goal (0%)</span>
+                </div>
             </div>
         </div>
 
