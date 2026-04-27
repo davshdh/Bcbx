@@ -38,13 +38,13 @@
 
         .image-container {
             width: 100%;
-            padding-top: 30px;
+            padding-top: 40px;
         }
 
         .image-container img {
-            width: 85%; /* Zvětšený obrázek */
+            width: 90%; /* Zvětšený obrázek */
             height: auto;
-            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+            filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.6));
         }
 
         .content {
@@ -67,35 +67,35 @@
         h1 {
             font-size: 32px;
             font-weight: 800;
-            margin: 0 0 16px 0;
+            margin: 0 0 24px 0;
             letter-spacing: -1px;
             line-height: 1.1;
         }
 
-        /* STYLOVÝ PROGRESS BAR PODLE VZORU */
-        .donation-box {
-            margin: 30px 0;
+        /* PROGRESS BAR PODLE VZORU */
+        .progress-section {
+            margin-bottom: 30px;
             padding: 0 10px;
         }
 
         .progress-track {
             width: 100%;
-            height: 4px;
+            height: 3px; /* Tenká linka jako na vzoru */
             background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             position: relative;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .progress-fill {
-            width: 0%; /* Změň na % podle potřeby */
+            width: 0%; /* Změň podle aktuálního stavu */
             height: 100%;
             background: linear-gradient(90deg, var(--accent-pink), var(--accent-purple));
             border-radius: 10px;
             position: relative;
         }
 
-        /* Ten malý puntík na konci lišty */
+        /* Puntík na konci lišty */
         .progress-fill::after {
             content: '';
             position: absolute;
@@ -104,16 +104,16 @@
             transform: translateY(-50%);
             width: 10px;
             height: 10px;
-            background: #fff;
+            background: #ffffff;
             border-radius: 50%;
             box-shadow: 0 0 10px var(--accent-pink);
         }
 
-        .donation-labels {
+        .progress-labels {
             display: flex;
             justify-content: space-between;
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .raised { color: #ffffff; }
@@ -137,13 +137,13 @@
             font-size: 18px;
             padding: 18px;
             border-radius: 16px;
-            transition: all 0.2s ease;
+            transition: transform 0.2s ease, opacity 0.2s ease;
             margin-bottom: 12px;
         }
 
         .btn-paypal:hover {
+            opacity: 0.9;
             transform: translateY(-2px);
-            opacity: 0.95;
         }
 
         .footer-text {
@@ -166,11 +166,11 @@
         
         <h1>Fill the Buzz Ball.</h1>
         
-        <div class="donation-box">
+        <div class="progress-section">
             <div class="progress-track">
                 <div class="progress-fill" style="width: 0%;"></div>
             </div>
-            <div class="donation-labels">
+            <div class="progress-labels">
                 <span class="raised">0€ raised</span>
                 <span class="goal">Goal: 5€</span>
             </div>
