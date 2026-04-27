@@ -3,120 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buzz Ball Progress</title>
+    <title>The Buzz Ball Project</title>
     <style>
         :root {
-            --accent: #d881fa;
-            --bg: #000000;
-            --card: #0a0a0a;
+            --bg-color: #0b0b15;
+            --accent-purple: #d881fa;
+            --text-main: #ffffff;
+            --text-dim: #9ca3af;
         }
 
         body {
-            background-color: var(--bg);
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            background: radial-gradient(circle at top, #1a1a2e 0%, #0b0b15 100%);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
             margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            -webkit-font-smoothing: antialiased;
         }
 
-        .container {
+        .card {
             width: 100%;
-            max-width: 420px;
-            padding: 40px 20px;
+            max-width: 400px;
+            background: rgba(15, 15, 25, 0.8);
+            border-radius: 32px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             text-align: center;
         }
 
-        /* Glassmorphism efekt pro fotku */
-        .image-card {
-            background: var(--card);
-            border: 1px solid #1a1a1a;
-            border-radius: 30px;
-            padding: 10px;
-            margin-bottom: 30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        .image-container {
+            width: 100%;
+            line-height: 0;
         }
 
-        img {
+        .image-container img {
             width: 100%;
             height: auto;
-            display: block;
-            border-radius: 22px;
-            image-rendering: -webkit-optimize-contrast;
+            /* Bez editace, čistě jak jsi poslal */
+        }
+
+        .content {
+            padding: 32px 24px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(90deg, #ff0080, #7928ca);
+            color: white;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 6px 16px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
         }
 
         h1 {
             font-size: 32px;
             font-weight: 800;
-            margin: 0 0 10px 0;
+            margin: 0 0 16px 0;
             letter-spacing: -1px;
+            line-height: 1.1;
         }
 
-        .description {
-            font-size: 16px;
-            color: #888;
+        p {
+            color: var(--text-dim);
+            font-size: 15px;
             line-height: 1.6;
-            margin-bottom: 40px;
-            padding: 0 10px;
+            margin-bottom: 30px;
         }
 
-        .description strong {
-            color: var(--accent);
+        p strong {
+            color: white;
         }
 
-        .btn {
+        /* Tlačítko přesně podle vzoru */
+        .btn-paypal {
             display: block;
-            background-color: var(--accent);
-            color: #000;
+            background: #ffffff;
+            color: #000000;
             text-decoration: none;
             font-weight: 700;
             font-size: 18px;
-            padding: 20px;
-            border-radius: 20px;
-            transition: all 0.2s cubic-bezier(0.2, 0, 0.2, 1);
-            box-shadow: 0 10px 30px rgba(216, 129, 250, 0.15);
+            padding: 18px;
+            border-radius: 16px;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            margin-bottom: 12px;
         }
 
-        .btn:hover {
-            transform: translateY(-2px);
-            filter: brightness(1.1);
-            box-shadow: 0 15px 40px rgba(216, 129, 250, 0.25);
+        .btn-paypal:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
         }
 
-        .btn:active {
-            transform: scale(0.97);
-        }
-
-        .footer-note {
-            margin-top: 25px;
+        .footer-text {
             font-size: 12px;
-            color: #444;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            color: #4b5563;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="image-card">
+<div class="card">
+    <div class="image-container">
         <img src="https://i.ibb.co/d4D4HCr4/a-But-I-need-it-to-be.png" alt="Buzz Ball Status">
     </div>
 
-    <h1>Buzz Ball</h1>
-    <p class="description">
-        Every donation helps fill the <strong>Buzz Ball</strong>. 
-        Watch it grow in real-time as we hit our goals!
-    </p>
+    <div class="content">
+        <div class="badge">Liquid Evolution</div>
+        
+        <h1>Fill the Buzz Ball.</h1>
+        
+        <p>
+            Let's be real. Help me fill this <strong>Buzz Ball</strong> to the top. 
+            Every donation updates the progress and brings us closer to the goal.
+        </p>
 
-    <a href="https://paypal.me/Davisoppxx" class="btn">
-        SUPPORT VIA PAYPAL
-    </a>
+        <a href="https://paypal.me/Davisoppxx" class="btn-paypal">
+            Support the Goal
+        </a>
 
-    <div class="footer-note">Direct via PayPal • Secure Connection</div>
+        <div class="footer-text">
+            Direct via PayPal • 100% Transparency
+        </div>
+    </div>
 </div>
 
 </body>
