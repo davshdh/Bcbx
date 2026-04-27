@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,6 @@
             --bg-color: #05050a;
             --card-bg: #0f0f1b;
             --accent-pink: #ff0080;
-            --accent-blue: #00d2ff;
             --text-main: #ffffff;
             --text-dim: #88889b;
         }
@@ -27,95 +26,76 @@
         }
 
         .card {
-            width: 95%;
-            max-width: 420px;
+            width: 92%;
+            max-width: 400px;
             background: var(--card-bg);
-            border-radius: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 0, 128, 0.1);
+            border-radius: 35px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
             overflow: hidden;
+            text-align: center;
         }
 
         .image-section {
-            padding: 40px 20px 20px;
-            text-align: center;
+            padding: 35px 20px 10px;
         }
 
         .image-section img {
-            width: 85%;
-            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.7));
-            animation: float 4s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+            width: 80%;
+            filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.7));
         }
 
         .content {
-            padding: 20px 35px 40px;
-            text-align: center;
+            padding: 20px 30px 40px;
         }
 
         .badge {
             display: inline-block;
             background: linear-gradient(90deg, var(--accent-pink), #7928ca);
-            padding: 8px 20px;
+            padding: 7px 18px;
             border-radius: 30px;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 25px;
-            box-shadow: 0 0 20px rgba(255, 0, 128, 0.4);
+            margin-bottom: 20px;
         }
 
         h1 {
-            font-size: 38px;
+            font-size: 34px;
             font-weight: 900;
-            margin: 0 0 30px;
-            letter-spacing: -1.5px;
+            margin: 0 0 25px;
+            letter-spacing: -1px;
         }
 
-        /* EXTRA TLUSTÝ PROGRESS BOX */
+        /* KOMPAKTNÍ ALE TLUSTÝ PROGRESS BOX */
         .progress-box {
-            background: rgba(0, 0, 0, 0.4);
-            padding: 30px 25px;
-            border-radius: 35px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 25px;
             border: 1px solid rgba(255, 255, 255, 0.05);
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .bar-container {
             width: 100%;
-            height: 35px; /* Extra tloušťka */
-            background: #000000;
+            height: 24px;
+            background: #000;
             border-radius: 50px;
-            padding: 5px;
+            padding: 4px;
             box-sizing: border-box;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: inset 0 2px 15px rgba(0,0,0,1);
-            margin-bottom: 25px;
+            margin-bottom: 15px;
             overflow: hidden;
         }
 
         .bar-fill {
-            /* TADY NASTAVUJEŠ PROCENTA - teď je tam 10% aby to bylo hned vidět */
-            width: 10%; 
+            width: 0%; /* Zde nastavuješ aktuální progress */
             height: 100%;
             background: linear-gradient(90deg, var(--accent-pink), #ff4d94);
             border-radius: 50px;
-            box-shadow: 0 0 25px rgba(255, 0, 128, 0.8), inset 0 0 10px rgba(255,255,255,0.4);
-            transition: width 1.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+            box-shadow: 0 0 15px rgba(255, 0, 128, 0.6);
             position: relative;
-        }
-
-        /* Animovaný odlesk pro "tekutý" vzhled */
-        .bar-fill::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(rgba(255,255,255,0.2) 0%, transparent 50%, rgba(0,0,0,0.2) 100%);
         }
 
         .stats-grid {
@@ -123,37 +103,29 @@
             justify-content: space-between;
         }
 
-        .stat-group {
-            text-align: left;
-        }
-
-        .stat-group.right {
-            text-align: right;
-        }
-
         .stat-value {
             display: block;
-            font-size: 26px;
+            font-size: 22px;
             font-weight: 900;
             color: #fff;
-            line-height: 1;
-            text-shadow: 0 0 10px rgba(255,255,255,0.2);
         }
 
         .stat-label {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-dim);
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 8px;
+            margin-top: 4px;
             display: block;
         }
 
+        /* TEXT POD TÍM - ZVÝRAZNĚNÝ A BÍLÝ */
         .desc {
-            color: var(--text-dim);
+            color: #ffffff;
             font-size: 15px;
             line-height: 1.6;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
+            font-weight: 700; /* Extra zvýraznění */
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
         .btn-action {
@@ -161,23 +133,20 @@
             background: #ffffff;
             color: #000;
             text-decoration: none;
-            font-weight: 900;
-            font-size: 20px;
-            padding: 22px;
-            border-radius: 20px;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            font-weight: 800;
+            font-size: 19px;
+            padding: 18px;
+            border-radius: 18px;
+            transition: transform 0.2s ease;
         }
 
         .btn-action:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(255, 0, 128, 0.3);
-            background: #f8f8f8;
+            transform: scale(1.02);
         }
 
         .footer {
-            margin-top: 30px;
-            font-size: 11px;
+            margin-top: 25px;
+            font-size: 10px;
             color: #44445a;
             letter-spacing: 1px;
         }
@@ -197,15 +166,15 @@
         
         <div class="progress-box">
             <div class="bar-container">
-                <div class="bar-fill" style="width: 10%;"></div>
+                <div class="bar-fill" style="width: 0%;"></div>
             </div>
             
             <div class="stats-grid">
-                <div class="stat-group">
+                <div style="text-align: left;">
                     <span class="stat-value">0€</span>
                     <span class="stat-label">Raised</span>
                 </div>
-                <div class="stat-group right">
+                <div style="text-align: right;">
                     <span class="stat-value">5€</span>
                     <span class="stat-label">Goal (0%)</span>
                 </div>
@@ -213,7 +182,7 @@
         </div>
 
         <p class="desc">
-            Let's be real. Help me fill this <strong>Buzz Ball</strong> to the top. Every contribution counts.
+            Let's be real. Help me fill this Buzz Ball to the top. Every donation updates the progress and brings us closer to the goal.
         </p>
 
         <a href="https://paypal.me/Davisoppxx" class="btn-action">
