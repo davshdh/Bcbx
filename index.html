@@ -8,35 +8,42 @@
         body {
             background-color: #000000;
             color: #ffffff;
-            font-family: -apple-system, system-ui, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            margin: 0;
             text-align: center;
         }
 
         .container {
-            max-width: 450px;
+            max-width: 480px;
             width: 90%;
             padding: 20px;
         }
 
+        .img-box {
+            width: 100%;
+            margin-bottom: 30px;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+
         img {
             width: 100%;
-            max-width: 400px; /* Aby nebyla obří a rozmazaná */
             height: auto;
             display: block;
-            margin: 0 auto 30px auto;
-            image-rendering: -webkit-optimize-contrast; /* Trochu pomůže ostrosti v prohlížeči */
+            /* Zachování ostrosti */
+            image-rendering: auto;
         }
 
         p {
-            font-size: 1.1rem;
-            margin-bottom: 35px;
-            line-height: 1.5;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 40px;
             font-weight: 400;
+            color: #eeeeee;
         }
 
         .btn {
@@ -44,22 +51,30 @@
             background-color: #d881fa;
             color: #000000;
             text-decoration: none;
-            font-weight: bold;
-            padding: 16px 32px;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            transition: background 0.2s;
+            font-weight: 800;
+            font-size: 1.2rem;
+            padding: 20px 45px;
+            border-radius: 15px;
+            transition: all 0.2s ease;
+            box-shadow: 0 10px 20px rgba(216, 129, 250, 0.1);
         }
 
         .btn:hover {
-            background-color: #e2a4fb;
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <img src="https://i.ibb.co/9HWHdKNH/1000027160.png" alt="Buzz Ball">
+    <div class="img-box">
+        <img src="https://i.ibb.co/9HWHdKNH/1000027160.png" alt="Buzz Ball Kvalitní">
+    </div>
 
     <p>Když někdo donatene, tak se ten buzz ball bude plnit.</p>
 
