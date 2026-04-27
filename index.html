@@ -113,5 +113,130 @@
             border-radius: 50px;
             padding: 6px;
             box-sizing: border-box;
-            border: 1px solid rgba(255, 255, 255
-                                   
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 4px 10px rgba(0,0,0,0.8);
+        }
+
+        .bar-fill {
+            width: 0%; /* NASTAVENO NA 0% */
+            min-width: 20px; /* Aby tam zbyla ta svítící kulička na začátku */
+            height: 100%;
+            background: linear-gradient(90deg, #ff0080, #ff80bf, #7928ca);
+            background-size: 200% 100%;
+            border-radius: 50px;
+            box-shadow: 0 0 25px rgba(255, 0, 128, 0.7);
+            position: relative;
+            animation: gradientMove 3s linear infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        .stats-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .stat-value {
+            display: block;
+            font-size: 26px;
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--accent-pink);
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-top: 4px;
+            display: block;
+        }
+
+        .desc {
+            color: #ffffff;
+            font-size: 17px;
+            line-height: 1.6;
+            margin: 0 0 35px 0;
+            font-weight: 800;
+            text-shadow: 0 2px 15px rgba(0,0,0,1), 0 0 5px rgba(255,255,255,0.2);
+            padding: 0 10px;
+        }
+
+        .btn-action {
+            display: block;
+            background: #ffffff;
+            color: #000;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 22px;
+            padding: 20px;
+            border-radius: 22px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            transition: transform 0.2s;
+        }
+
+        .btn-action:active {
+            transform: scale(0.95);
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 11px;
+            color: #555570;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div class="image-section">
+        <img src="https://i.ibb.co/d4D4HCr4/a-But-I-need-it-to-be.png" alt="Buzz Ball Evolution">
+    </div>
+
+    <div class="content">
+        <div class="badge">Liquid Evolution</div>
+        <h1>Fill the Buzz Ball.</h1>
+        
+        <div class="progress-box">
+            <div class="bar-container">
+                <div class="bar-fill"></div>
+            </div>
+            
+            <div class="stats-grid">
+                <div style="text-align: left;">
+                    <span class="stat-value">0€</span>
+                    <span class="stat-label">Raised</span>
+                </div>
+                <div style="text-align: right;">
+                    <span class="stat-value">5€</span>
+                    <span class="stat-label">Goal</span>
+                </div>
+            </div>
+        </div>
+
+        <p class="desc">
+            LET'S BE REAL. HELP ME FILL THIS BUZZ BALL TO THE TOP. EVERY DONATION UPDATES THE PROGRESS AND BRINGS US CLOSER TO THE GOAL!
+        </p>
+
+        <a href="https://paypal.me/Davisoppxx" class="btn-action">Support the Goal</a>
+
+        <div class="footer">
+            DIRECT VIA PAYPAL • 100% TRANSPARENCY
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
