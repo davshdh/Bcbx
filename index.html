@@ -3,35 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buzz Ball</title>
+    <title>Buzz Ball Donation</title>
     <style>
         body {
             background-color: #000000;
             color: #ffffff;
-            font-family: sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            margin: 0;
             text-align: center;
         }
 
         .container {
-            max-width: 400px;
+            max-width: 90%;
+            width: 400px;
             padding: 20px;
+        }
+
+        .image-container {
+            width: 100%;
+            margin-bottom: 30px;
         }
 
         img {
             width: 100%;
             height: auto;
-            display: block;
-            margin-bottom: 20px;
+            border-radius: 15px;
         }
 
         p {
-            font-size: 18px;
-            margin-bottom: 30px;
+            font-size: 1.2rem;
+            line-height: 1.5;
+            margin-bottom: 40px;
+            font-weight: 300;
         }
 
         .btn {
@@ -40,15 +47,23 @@
             color: #000000;
             text-decoration: none;
             font-weight: bold;
-            padding: 15px 30px;
-            border-radius: 10px;
+            font-size: 1.1rem;
+            padding: 18px 40px;
+            border-radius: 12px;
+            transition: transform 0.2s;
+        }
+
+        .btn:active {
+            transform: scale(0.95);
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <img src="https://ibb.co/9HWHdKNH" alt="Buzz Ball">
+    <div class="image-container">
+        <img src="https://i.ibb.co/9HWHdKNH/1000027160.png" alt="Buzz Ball">
+    </div>
 
     <p>Když někdo donatene, tak se ten buzz ball bude plnit.</p>
 
