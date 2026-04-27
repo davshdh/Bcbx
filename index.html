@@ -6,19 +6,19 @@
     <title>The Buzz Ball Project</title>
     <style>
         :root {
-            --bg-color: #0b0b15;
+            --bg-color: #05050a;
+            --card-bg: #0f0f1b;
             --accent-pink: #ff0080;
-            --accent-purple: #7928ca;
+            --accent-blue: #00d2ff;
             --text-main: #ffffff;
-            --text-dim: #9ca3af;
-            --bar-bg: rgba(255, 255, 255, 0.05);
+            --text-dim: #88889b;
         }
 
         body {
             background-color: var(--bg-color);
-            background: radial-gradient(circle at top, #1a1a2e 0%, #0b0b15 100%);
+            background: radial-gradient(circle at 50% -20%, #1e1e3f 0%, #05050a 100%);
             color: var(--text-main);
-            font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+            font-family: 'Inter', -apple-system, sans-serif;
             margin: 0;
             display: flex;
             justify-content: center;
@@ -27,132 +27,150 @@
         }
 
         .card {
-            width: 90%;
-            max-width: 400px;
-            background: rgba(20, 20, 35, 0.9);
-            border-radius: 32px;
+            width: 95%;
+            max-width: 420px;
+            background: var(--card-bg);
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 0, 128, 0.1);
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .image-section {
+            padding: 40px 20px 20px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.03), transparent);
             text-align: center;
-            padding-bottom: 20px;
         }
 
-        .image-container {
-            width: 100%;
-            padding-top: 40px;
-            margin-bottom: 10px;
-        }
-
-        .image-container img {
+        .image-section img {
             width: 85%;
-            height: auto;
-            filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.5));
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.7));
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
         }
 
         .content {
-            padding: 20px 30px;
+            padding: 20px 35px 40px;
+            text-align: center;
         }
 
         .badge {
             display: inline-block;
-            background: linear-gradient(90deg, var(--accent-pink), var(--accent-purple));
-            color: white;
+            background: linear-gradient(90deg, var(--accent-pink), #7928ca);
+            padding: 8px 20px;
+            border-radius: 30px;
             font-size: 11px;
-            font-weight: 800;
-            padding: 6px 16px;
-            border-radius: 20px;
+            font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            box-shadow: 0 0 20px rgba(255, 0, 128, 0.4);
         }
 
         h1 {
-            font-size: 32px;
-            font-weight: 800;
-            margin: 0 0 24px 0;
-            letter-spacing: -1px;
+            font-size: 38px;
+            font-weight: 900;
+            margin: 0 0 30px;
+            letter-spacing: -1.5px;
+            line-height: 1;
         }
 
-        /* ČISTÝ PROGRESS BAR PODLE VZORU */
-        .progress-container {
+        /* TLUSTÝ A PROPRACCOVANÝ PROGRESS BAR */
+        .progress-box {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 25px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
             margin-bottom: 30px;
         }
 
-        .progress-track {
+        .bar-container {
             width: 100%;
-            height: 6px;
-            background: var(--bar-bg);
-            border-radius: 10px;
-            margin-bottom: 12px;
-            overflow: hidden;
+            height: 28px; /* Pořádně tlustý bar */
+            background: #1a1a2e;
+            border-radius: 50px;
+            padding: 6px;
+            box-sizing: border-box;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.8);
+            margin-bottom: 20px;
+            position: relative;
         }
 
-        .progress-fill {
-            width: 0%; /* Tady měníš procenta */
+        .bar-fill {
+            width: 0%; /* ZMĚNIT PRO PROGRESS */
             height: 100%;
-            background: rgba(255, 255, 255, 0.15); /* Jemná šedá/bílá podle vzoru */
-            border-radius: 10px;
-            transition: width 1s ease;
+            background: linear-gradient(90deg, var(--accent-pink), #ff4d94);
+            border-radius: 50px;
+            box-shadow: 0 0 20px rgba(255, 0, 128, 0.6), inset 0 0 8px rgba(255,255,255,0.4);
+            transition: width 1.5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+            position: relative;
         }
 
-        .progress-details {
+        .stats-grid {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
         }
 
-        .detail-item {
+        .stat-group {
             text-align: left;
         }
 
-        .detail-item.right {
+        .stat-group.right {
             text-align: right;
         }
 
-        .amount {
+        .stat-value {
             display: block;
-            font-size: 20px;
-            font-weight: 800;
-            color: #ffffff;
+            font-size: 24px;
+            font-weight: 900;
+            color: #fff;
+            line-height: 1;
         }
 
-        .label {
-            display: block;
+        .stat-label {
             font-size: 12px;
             color: var(--text-dim);
-            margin-top: 2px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+            display: block;
         }
 
-        p {
+        .desc {
             color: var(--text-dim);
             font-size: 15px;
             line-height: 1.6;
-            margin: 25px 0;
-            text-align: center;
+            margin-bottom: 35px;
         }
 
-        .btn-paypal {
+        .btn-action {
             display: block;
             background: #ffffff;
-            color: #000000;
+            color: #000;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 18px;
-            padding: 16px;
-            border-radius: 14px;
-            transition: transform 0.2s ease;
-            margin-bottom: 15px;
+            font-weight: 900;
+            font-size: 19px;
+            padding: 22px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .btn-paypal:hover {
-            transform: scale(1.02);
+        .btn-action:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(255, 0, 128, 0.2);
         }
 
-        .footer-text {
-            font-size: 10px;
-            color: #4b5563;
-            text-transform: uppercase;
+        .footer {
+            margin-top: 25px;
+            font-size: 11px;
+            color: #44445a;
             letter-spacing: 1px;
         }
     </style>
@@ -160,45 +178,6 @@
 <body>
 
 <div class="card">
-    <div class="image-container">
-        <img src="https://i.ibb.co/d4D4HCr4/a-But-I-need-it-to-be.png" alt="Buzz Ball Status">
-    </div>
-
-    <div class="content">
-        <div class="badge">Liquid Evolution</div>
-        
-        <h1>Fill the Buzz Ball.</h1>
-        
-        <div class="progress-container">
-            <div class="progress-track">
-                <div class="progress-fill" style="width: 0%;"></div>
-            </div>
-            <div class="progress-details">
-                <div class="detail-item">
-                    <span class="amount">0€</span>
-                    <span class="label">raised</span>
-                </div>
-                <div class="detail-item right">
-                    <span class="amount">5€</span>
-                    <span class="label">goal (0%)</span>
-                </div>
-            </div>
-        </div>
-
-        <p>
-            Let's be real. Help me fill this <strong>Buzz Ball</strong> to the top. 
-            Every donation updates the progress and brings us closer to the goal.
-        </p>
-
-        <a href="https://paypal.me/Davisoppxx" class="btn-paypal">
-            Support the Goal
-        </a>
-
-        <div class="footer-text">
-            Direct via PayPal • 100% Transparency
-        </div>
-    </div>
-</div>
-
-</body>
-</html>
+    <div class="image-section">
+        <img src="https://i.ibb.co/d4D4HCr4/a-But-I-need-it-to-be.
+            
