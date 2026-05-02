@@ -3,72 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Hopps Initiative | Secure the Future</title>
+    <title>Judy Hopps for 10 Years</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        .main-container {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .judy-img {
+            width: 100%;
+            border-radius: 20px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .btn-paypal {
+            background-color: #0070ba;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: transform 0.2s;
+            text-decoration: none;
+            margin-top: 20px;
+            width: 100%;
+        }
+        .btn-paypal:hover {
+            transform: scale(1.02);
+            background-color: #005ea6;
         }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-800 antialiased flex flex-col min-h-screen">
+<body>
 
-    <nav class="bg-white shadow-sm py-4">
-        <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
-            <div class="font-bold text-2xl tracking-tighter text-indigo-600">
-                The Hopps Fund.
-            </div>
-            <div class="hidden md:flex space-x-6 text-sm font-semibold text-gray-500">
-                <a href="#" class="hover:text-indigo-600 transition">About Us</a>
-                <a href="#" class="hover:text-indigo-600 transition">Impact</a>
-                <a href="#" class="hover:text-indigo-600 transition">FAQ</a>
-            </div>
-        </div>
-    </nav>
+    <div class="main-container">
+        <img src="https://i.ibb.co/jk379z1Z/image.jpg" alt="Judy Hopps" class="judy-img">
 
-    <main class="flex-grow flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-4xl w-full bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col md:flex-row">
-            
-            <div class="md:w-1/2 bg-gray-200">
-                <img src="https://i.ibb.co/jk379z1Z/image.jpg" alt="Officer Judy Hopps" class="object-cover w-full h-64 md:h-full" onerror="this.src='https://images.unsplash.com/photo-1585110396000-c9fd4e4e5088?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'; this.alt='Placeholder Rabbit';">
-            </div>
+        <h1 class="text-4xl font-black mb-4 tracking-tight text-black">
+            Judy Hopps for 10 years
+        </h1>
 
-            <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
-                <div class="uppercase tracking-widest text-xs font-bold text-indigo-500 mb-2">Exclusive Sponsorship</div>
-                <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 leading-tight">
-                    Secure Officer Hopps for 10 Years.
-                </h1>
-                <p class="text-gray-600 mb-6 leading-relaxed">
-                    Join our premier initiative to fund the Zootopia Police Department's finest. By participating in this highly professional (and completely satirical) fund, you guarantee maximum hopping efficiency and unyielding justice for the next decade.
-                </p>
-
-                <div class="flex items-baseline mb-8">
-                    <span class="text-5xl font-extrabold text-gray-900">€25.00</span>
-                    <span class="ml-2 text-lg text-gray-500 font-medium">/ 10-year term</span>
-                </div>
-
-                <button onclick="handlePaymentJoke()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-8 rounded-lg shadow-lg transform transition duration-200 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-indigo-300 text-lg">
-                    Sponsor Now
-                </button>
-
-                <p class="text-xs text-gray-400 mt-4 text-center">
-                    * By clicking "Sponsor Now", you acknowledge that this is a joke and no actual bunnies will be shipped to your address.
-                </p>
-            </div>
-        </div>
-    </main>
-
-    <footer class="bg-gray-900 text-white text-center py-6">
-        <p class="text-sm text-gray-400">
-            &copy; 2026 The Hopps Initiative. 100% Satirical Purpose. 
+        <p class="text-gray-600 text-lg leading-relaxed mb-8">
+            I'm raising money to make my dream come true — to have Judy Hopps live with me as my companion for the next 10 years, I swear I have a job.
         </p>
-    </footer>
 
-    <script>
-        function handlePaymentJoke() {
-            alert("🐰 PAYMENT INITIATED! 🐰\n\nJust kidding! This is a satirical website. Your €25 is safe, but Judy appreciates the moral support for the next 10 years!");
-        }
-    </script>
+        <div class="bg-gray-100 rounded-full h-4 mb-2 overflow-hidden">
+            <div class="bg-blue-500 h-full w-1/3"></div>
+        </div>
+        <div class="flex justify-between text-sm font-bold mb-8">
+            <span>€0 raised</span>
+            <span>Goal: €25</span>
+        </div>
+
+        <a href="https://paypal.me/Davisoppxx" target="_blank" class="btn-paypal">
+            Donate €25 via PayPal
+        </a>
+
+        <p class="text-[10px] text-gray-400 mt-10 uppercase tracking-widest">
+            Satirical Fundraiser • No bunnies included
+        </p>
+    </div>
+
 </body>
 </html>
