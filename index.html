@@ -1,242 +1,74 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fill the Buzz Ball - Ultimate Design</title>
+    <title>The Hopps Initiative | Secure the Future</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-deep: #05050a;
-            --accent-pink: #ff0080;
-            --accent-purple: #7928ca;
-            --accent-blue: #00d2ff;
-            --text-white: #ffffff;
-        }
-
         body {
-            background-color: var(--bg-deep);
-            background: radial-gradient(circle at center, #1e1e3f 0%, #05050a 100%);
-            color: var(--text-white);
-            font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        .card {
-            width: 95%;
-            max-width: 420px;
-            background: linear-gradient(145deg, #16162d, #0b0b18);
-            border-radius: 45px;
-            border: 2px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.9), 
-                        0 0 40px rgba(255, 0, 128, 0.15);
-            overflow: hidden;
-            position: relative;
-            z-index: 1;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 150px;
-            height: 150px;
-            background: var(--accent-pink);
-            filter: blur(80px);
-            opacity: 0.2;
-            z-index: -1;
-        }
-
-        .image-section {
-            padding: 45px 20px 15px;
-            text-align: center;
-        }
-
-        .image-section img {
-            width: 85%;
-            filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.8));
-            animation: float 5s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-15px) scale(1.02); }
-        }
-
-        .content {
-            padding: 10px 35px 45px;
-            text-align: center;
-        }
-
-        .badge {
-            display: inline-block;
-            background: linear-gradient(90deg, var(--accent-pink), var(--accent-purple));
-            padding: 8px 22px;
-            border-radius: 50px;
-            font-size: 11px;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            margin-bottom: 25px;
-            box-shadow: 0 5px 20px rgba(255, 0, 128, 0.4);
-        }
-
-        h1 {
-            font-size: 40px;
-            font-weight: 900;
-            margin: 0 0 30px;
-            letter-spacing: -1.5px;
-            background: linear-gradient(to bottom, #fff 60%, #888);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .progress-box {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 25px;
-            border-radius: 35px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            margin-bottom: 30px;
-            backdrop-filter: blur(10px);
-            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.02);
-        }
-
-        .bar-container {
-            width: 100%;
-            height: 32px;
-            background: #000;
-            border-radius: 50px;
-            padding: 6px;
-            box-sizing: border-box;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            margin-bottom: 20px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: inset 0 4px 10px rgba(0,0,0,0.8);
-        }
-
-        .bar-fill {
-            width: 0%; /* NASTAVENO NA 0% */
-            min-width: 20px; /* Aby tam zbyla ta svítící kulička na začátku */
-            height: 100%;
-            background: linear-gradient(90deg, #ff0080, #ff80bf, #7928ca);
-            background-size: 200% 100%;
-            border-radius: 50px;
-            box-shadow: 0 0 25px rgba(255, 0, 128, 0.7);
-            position: relative;
-            animation: gradientMove 3s linear infinite;
-        }
-
-        @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 200% 50%; }
-        }
-
-        .stats-grid {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .stat-value {
-            display: block;
-            font-size: 26px;
-            font-weight: 900;
-            color: #fff;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-        }
-
-        .stat-label {
-            font-size: 13px;
-            color: var(--accent-pink);
-            text-transform: uppercase;
-            font-weight: 800;
-            letter-spacing: 1px;
-            margin-top: 4px;
-            display: block;
-        }
-
-        .desc {
-            color: #ffffff;
-            font-size: 17px;
-            line-height: 1.6;
-            margin: 0 0 35px 0;
-            font-weight: 800;
-            text-shadow: 0 2px 15px rgba(0,0,0,1), 0 0 5px rgba(255,255,255,0.2);
-            padding: 0 10px;
-        }
-
-        .btn-action {
-            display: block;
-            background: #ffffff;
-            color: #000;
-            text-decoration: none;
-            font-weight: 900;
-            font-size: 22px;
-            padding: 20px;
-            border-radius: 22px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-            transition: transform 0.2s;
-        }
-
-        .btn-action:active {
-            transform: scale(0.95);
-        }
-
-        .footer {
-            margin-top: 30px;
-            font-size: 11px;
-            color: #555570;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 700;
+            font-family: 'Inter', sans-serif;
         }
     </style>
 </head>
-<body>
+<body class="bg-gray-100 text-gray-800 antialiased flex flex-col min-h-screen">
 
-<div class="card">
-    <div class="image-section">
-        <img src="https://i.ibb.co/d4D4HCr4/a-But-I-need-it-to-be.png" alt="Buzz Ball Evolution">
-    </div>
-
-    <div class="content">
-        <div class="badge">Liquid Evolution</div>
-        <h1>Fill the Buzz Ball.</h1>
-        
-        <div class="progress-box">
-            <div class="bar-container">
-                <div class="bar-fill"></div>
+    <nav class="bg-white shadow-sm py-4">
+        <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
+            <div class="font-bold text-2xl tracking-tighter text-indigo-600">
+                The Hopps Fund.
             </div>
+            <div class="hidden md:flex space-x-6 text-sm font-semibold text-gray-500">
+                <a href="#" class="hover:text-indigo-600 transition">About Us</a>
+                <a href="#" class="hover:text-indigo-600 transition">Impact</a>
+                <a href="#" class="hover:text-indigo-600 transition">FAQ</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl w-full bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col md:flex-row">
             
-            <div class="stats-grid">
-                <div style="text-align: left;">
-                    <span class="stat-value">0€</span>
-                    <span class="stat-label">Raised</span>
+            <div class="md:w-1/2 bg-gray-200">
+                <img src="https://i.ibb.co/jk379z1Z/image.jpg" alt="Officer Judy Hopps" class="object-cover w-full h-64 md:h-full" onerror="this.src='https://images.unsplash.com/photo-1585110396000-c9fd4e4e5088?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'; this.alt='Placeholder Rabbit';">
+            </div>
+
+            <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                <div class="uppercase tracking-widest text-xs font-bold text-indigo-500 mb-2">Exclusive Sponsorship</div>
+                <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 leading-tight">
+                    Secure Officer Hopps for 10 Years.
+                </h1>
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Join our premier initiative to fund the Zootopia Police Department's finest. By participating in this highly professional (and completely satirical) fund, you guarantee maximum hopping efficiency and unyielding justice for the next decade.
+                </p>
+
+                <div class="flex items-baseline mb-8">
+                    <span class="text-5xl font-extrabold text-gray-900">€25.00</span>
+                    <span class="ml-2 text-lg text-gray-500 font-medium">/ 10-year term</span>
                 </div>
-                <div style="text-align: right;">
-                    <span class="stat-value">5€</span>
-                    <span class="stat-label">Goal</span>
-                </div>
+
+                <button onclick="handlePaymentJoke()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-8 rounded-lg shadow-lg transform transition duration-200 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-indigo-300 text-lg">
+                    Sponsor Now
+                </button>
+
+                <p class="text-xs text-gray-400 mt-4 text-center">
+                    * By clicking "Sponsor Now", you acknowledge that this is a joke and no actual bunnies will be shipped to your address.
+                </p>
             </div>
         </div>
+    </main>
 
-        <p class="desc">
-            LET'S BE REAL. HELP ME FILL THIS BUZZ BALL TO THE TOP. EVERY DONATION UPDATES THE PROGRESS AND BRINGS US CLOSER TO THE GOAL!
+    <footer class="bg-gray-900 text-white text-center py-6">
+        <p class="text-sm text-gray-400">
+            &copy; 2026 The Hopps Initiative. 100% Satirical Purpose. 
         </p>
+    </footer>
 
-        <a href="https://paypal.me/Davisoppxx" class="btn-action">Support the Goal</a>
-
-        <div class="footer">
-            DIRECT VIA PAYPAL • 100% TRANSPARENCY
-        </div>
-    </div>
-</div>
-
+    <script>
+        function handlePaymentJoke() {
+            alert("🐰 PAYMENT INITIATED! 🐰\n\nJust kidding! This is a satirical website. Your €25 is safe, but Judy appreciates the moral support for the next 10 years!");
+        }
+    </script>
 </body>
 </html>
