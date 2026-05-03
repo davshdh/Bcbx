@@ -3,196 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Judy Initiative | 2026-2036</title>
+    <title>PostGenius AI | Professional LinkedIn Posts</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #ff4785;
-            --secondary: #7047eb;
-        }
-        body {
-            font-family: 'Outfit', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
-            background-attachment: fixed;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            overflow-x: hidden;
-        }
-
-        /* Animované pozadí pro pozornost */
-        .mesh-gradient {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            background: 
-                radial-gradient(at 0% 0%, rgba(255, 71, 133, 0.15) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(112, 71, 235, 0.15) 0px, transparent 50%);
-        }
-
-        .premium-card {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 40px;
-            width: 100%;
-            max-width: 440px;
-            padding: 40px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
-            transform: translateY(0);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .premium-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.12);
-        }
-
-        .img-container {
-            width: 100%;
-            border-radius: 30px;
-            overflow: hidden;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            position: relative;
-        }
-
-        .img-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.6s ease;
-        }
-
-        .img-container:hover img {
-            transform: scale(1.05);
-        }
-
-        .badge-verified {
-            background: white;
-            color: #1d9bf0;
-            padding: 6px 12px;
-            border-radius: 100px;
-            font-size: 11px;
-            font-weight: 800;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            margin-bottom: 15px;
-        }
-
-        .progress-ui {
-            background: rgba(0, 0, 0, 0.03);
-            border-radius: 24px;
-            padding: 20px;
-            margin: 25px 0;
-            border: 1px solid rgba(0,0,0,0.02);
-        }
-
-        .bar-track {
-            background: #e2e8f0;
-            height: 8px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            overflow: hidden;
-        }
-
-        .bar-thumb {
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            width: 15%; /* Procenta */
-            height: 100%;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(255, 71, 133, 0.3);
-            animation: slideIn 1.5s ease-out forwards;
-        }
-
-        @keyframes slideIn {
-            from { width: 0%; }
-            to { width: 15%; }
-        }
-
-        .btn-pay {
-            background: #000;
-            color: #fff;
-            width: 100%;
-            padding: 20px;
-            border-radius: 20px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            text-align: center;
-            display: block;
-            text-decoration: none;
-            transition: all 0.3s;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        .btn-pay:hover {
-            background: #222;
-            transform: scale(1.02);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-
-        .text-description {
-            color: #64748b;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
+        body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-900">
 
-    <div class="mesh-gradient"></div>
-
-    <div class="premium-card">
-        <div class="badge-verified">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22.5 12.5c0-1.58-.88-2.95-2.18-3.66.15-.44.23-.91.23-1.4 0-2.25-1.83-4.07-4.07-4.07-.49 0-.96.08-1.4.23-1.01-1.3-1.78-2.2-3.66-2.2s-2.65.9-3.66 2.2c-.44-.15-.91-.23-1.4-.23-2.25 0-4.07 1.83-4.07 4.07 0 .49.08.96.23 1.4-1.3.71-2.18 2.08-2.18 3.66 0 1.58.88 2.95 2.18 3.66-.15.44-.23.91-.23 1.4 0 2.25 1.83 4.07 4.07 4.07.49 0 .96-.08 1.4-.23 1.01 1.3 1.78 2.2 3.66 2.2s2.65-.9 3.66-2.2c.44.15.91.23 1.4.23 2.25 0 4.07-1.83 4.07-4.07 0-.49-.08-.96-.23-1.4 1.3-.71 2.18-2.08 2.18-3.66zm-12.22 5.08l-4.16-4.16 1.41-1.41 2.75 2.74 6.33-6.33 1.41 1.41-7.74 7.75z"/></svg>
-            Verified Companion Initiative
+    <nav class="p-6 flex justify-between items-center max-w-6xl mx-auto">
+        <div class="text-2xl font-bold text-blue-600 tracking-tight">PostGenius.ai</div>
+        <div class="space-x-4">
+            <a href="#" class="text-slate-600 hover:text-blue-600 transition">Pricing</a>
+            <button class="bg-blue-600 text-white px-5 py-2 rounded-full font-semibold hover:bg-blue-700 transition shadow-lg">Get Started</button>
         </div>
+    </nav>
 
-        <div class="img-container">
-            <img src="https://i.ibb.co/VcC1N0Wh/40674c56bc017d74956d596b57fb6e96.jpg" alt="Judy Hopps Official">
-        </div>
-
-        <h1 class="text-4xl font-extrabold text-slate-900 mb-2 tracking-tight">
-            Judy Hopps <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-violet-600">for 10 years</span>
+    <main class="max-w-4xl mx-auto mt-20 px-6 text-center">
+        <h1 class="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
+            Turn your raw thoughts into <span class="text-blue-600">Viral Posts</span>
         </h1>
-
-        <p class="text-description font-medium">
-            I'm raising money to make my dream come true — to have Judy Hopps live with me as my companion for the next 10 years, <span class="text-slate-900">I swear I have a job.</span>
+        <p class="text-xl text-slate-600 mb-10 max-w-2xl mx-auto">
+            The #1 AI writing assistant for founders and professionals. Grow your audience on LinkedIn in seconds.
         </p>
 
-        <div class="progress-ui">
-            <div class="bar-track">
-                <div class="bar-thumb"></div>
-            </div>
-            <div class="flex justify-between items-center">
-                <div>
-                    <p class="text-[10px] uppercase font-extrabold text-slate-400 tracking-widest mb-1">Current Progress</p>
-                    <p class="text-2xl font-black text-slate-900">€0.00</p>
+        <div class="bg-white p-8 rounded-3xl shadow-2xl border border-slate-100 text-left">
+            <label class="block text-sm font-semibold text-slate-500 uppercase tracking-wider mb-2">What happened today?</label>
+            <textarea 
+                class="w-full h-40 p-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:outline-none text-lg resize-none"
+                placeholder="Ex: I just closed a $10k deal after 6 months of negotiations. I learned that persistence is key..."></textarea>
+            
+            <div class="mt-6 flex flex-col md:flex-row gap-4 items-center justify-between">
+                <div class="flex gap-2">
+                    <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-md text-sm font-medium italic">Style: Professional</span>
                 </div>
-                <div class="text-right">
-                    <p class="text-[10px] uppercase font-extrabold text-slate-400 tracking-widest mb-1">Target</p>
-                    <p class="text-2xl font-black text-violet-600">€25.00</p>
-                </div>
+                <button class="w-full md:w-auto bg-slate-900 text-white px-8 py-4 rounded-2xl font-bold hover:bg-black transition-all transform hover:scale-105 shadow-xl">
+                    Generate Post ✨
+                </button>
             </div>
         </div>
 
-        <a href="https://paypal.me/Davisoppxx" target="_blank" class="btn-pay">
-            Back this Project
-        </a>
-
-        <div class="mt-6 flex justify-center items-center gap-4 opacity-40">
-            <span class="text-[9px] font-bold uppercase tracking-widest text-slate-900">Encrypted via PayPal</span>
-            <span class="w-1 h-1 bg-slate-900 rounded-full"></span>
-            <span class="text-[9px] font-bold uppercase tracking-widest text-slate-900">2026 Edition</span>
+        <div class="mt-12 text-slate-400 text-sm italic">
+            Trusted by 500+ creators worldwide
         </div>
-    </div>
+    </main>
+
+    <footer class="mt-32 py-10 border-t border-slate-200 text-center text-slate-500">
+        <p>&copy; 2024 PostGenius AI. All rights reserved.</p>
+    </footer>
 
 </body>
 </html>
