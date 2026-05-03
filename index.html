@@ -3,57 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ViralStory AI | Creator Tools</title>
+    <title>StoryViral AI | Creator Studio</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        body { background: #0f172a; color: white; font-family: sans-serif; }
-        .magic-bg { background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f8fafc; }
+        .gradient-text { background: linear-gradient(90deg, #4f46e5, #9333ea); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     </style>
 </head>
-<body class="p-6">
-    <main class="max-w-xl mx-auto mt-10">
-        <div class="text-center mb-10">
-            <h1 class="text-4xl font-black mb-2 italic tracking-tighter">VIRAL STORY AI</h1>
-            <p class="text-slate-400 font-medium">Generuj scénáře pro TikTok a Reels za 0 Kč</p>
+<body class="min-h-screen pb-20">
+
+    <nav class="max-w-5xl mx-auto py-8 px-6 flex justify-between items-center">
+        <div class="text-2xl font-extrabold tracking-tighter text-slate-900">Story<span class="text-indigo-600">Viral</span></div>
+        <div class="flex items-center gap-2">
+            <span class="h-2 w-2 bg-indigo-500 rounded-full animate-pulse"></span>
+            <span class="text-sm font-bold text-slate-500 uppercase tracking-widest">Creator Mode</span>
+        </div>
+    </nav>
+
+    <main class="max-w-2xl mx-auto px-6">
+        <div class="text-center mb-12">
+            <h1 class="text-5xl font-extrabold text-slate-900 mb-4 leading-tight">Vytvoř další <br><span class="gradient-text">Viral na TikToku</span></h1>
+            <p class="text-slate-500 text-lg">AI ti napíše šokující scénář, který lidé nedokoukají do konce bez dechu.</p>
         </div>
 
-        <div class="bg-slate-800 p-6 rounded-3xl border border-slate-700 shadow-2xl">
-            <label class="block text-xs font-bold text-slate-500 uppercase mb-3">O čem má příběh být?</label>
-            <input id="topic" type="text" placeholder="Např. strašidelný les, zrada v rodině..." 
-                class="w-full p-4 bg-slate-900 border border-slate-700 rounded-2xl mb-4 outline-none focus:border-purple-500 transition-all">
-            
-            <label class="block text-xs font-bold text-slate-500 uppercase mb-3">Délka příběhu</label>
-            <select id="length" class="w-full p-4 bg-slate-900 border border-slate-700 rounded-2xl mb-6 outline-none">
-                <option value="krátký (30 sekund)">Krátký (Shorts/TikTok)</option>
-                <option value="dlouhý (2 minuty)">Dlouhý (YouTube)</option>
-            </select>
+        <div class="bg-white rounded-[2rem] shadow-2xl shadow-indigo-100 border border-slate-100 p-8 md:p-10">
+            <div class="space-y-6">
+                <div>
+                    <label class="block text-sm font-bold text-slate-400 uppercase tracking-widest mb-3">Téma nebo nápad na příběh</label>
+                    <textarea id="storyInput" 
+                        class="w-full h-32 p-5 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-indigo-500 focus:ring-0 outline-none text-slate-700 transition-all resize-none text-lg"
+                        placeholder="Např. Horor v lese, Reddit příběh o zradě, co kdyby..."></textarea>
+                </div>
 
-            <button onclick="generateStory()" id="btn" class="w-full magic-bg py-4 rounded-2xl font-black uppercase tracking-widest hover:opacity-90 transition-all active:scale-95">
-                Vytvořit virální scénář ✨
-            </button>
+                <div>
+                    <label class="block text-sm font-bold text-slate-400 uppercase tracking-widest mb-3">Délka videa</label>
+                    <select id="length" class="w-full p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none focus:border-indigo-500 font-semibold text-slate-700">
+                        <option value="Shorts / TikTok (do 60s)">📱 Shorts / TikTok (do 60s)</option>
+                        <option value="YouTube video (2-5 min)">🎥 YouTube video (2-5 min)</option>
+                        <option value="Děsivý krátký příběh">👻 Děsivý krátký příběh</option>
+                    </select>
+                </div>
+
+                <button onclick="generateStory()" id="genBtn" class="w-full bg-slate-900 text-white py-5 rounded-2xl font-bold text-xl hover:bg-indigo-600 transition-all shadow-xl active:scale-95 flex justify-center items-center gap-3">
+                    <span>Vygenerovat scénář</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20l-7-7 7-7M5 20l-7-7 7-7" />
+                    </svg>
+                </button>
+            </div>
         </div>
 
-        <div id="resultBox" class="hidden mt-8 space-y-4">
-            <div class="p-6 bg-slate-900 rounded-3xl border border-purple-500/30">
-                <h3 class="text-purple-400 font-bold mb-4 uppercase text-sm tracking-widest">Tvůj scénář:</h3>
-                <div id="resultText" class="text-slate-300 leading-relaxed whitespace-pre-wrap italic"></div>
+        <div id="resultBox" class="hidden mt-10 transform transition-all">
+            <div class="bg-indigo-600 rounded-[2rem] p-8 text-white shadow-2xl">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-indigo-200 font-bold uppercase text-xs tracking-widest">Hotový Scénář</span>
+                    <button onclick="copyText()" class="bg-indigo-500 hover:bg-indigo-400 px-4 py-2 rounded-xl text-xs font-bold transition-colors">KOPÍROVAT</button>
+                </div>
+                <div id="resultText" class="text-lg leading-relaxed font-medium whitespace-pre-wrap"></div>
             </div>
         </div>
     </main>
 
     <script>
         async function generateStory() {
-            const apiKey = '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'; // Vlož svůj GSK klíč
-            const topic = document.getElementById('topic').value;
+            // --- SEM VLOŽ SVŮJ GROQ API KLÍČ ---
+            const apiKey = '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';
+            // ----------------------------------
+
+            const input = document.getElementById('storyInput').value;
             const length = document.getElementById('length').value;
-            const btn = document.getElementById('btn');
+            const btn = document.getElementById('genBtn');
             const resultBox = document.getElementById('resultBox');
             const resultText = document.getElementById('resultText');
 
-            if (!topic) return alert("Napiš aspoň jedno slovo, o čem to má být!");
+            if (!input) {
+                alert("Nejdřív napiš téma příběhu!");
+                return;
+            }
 
-            btn.innerText = "PÍŠU PŘÍBĚH...";
+            btn.innerText = "Píšu virální hit...";
             btn.disabled = true;
+            btn.style.opacity = "0.7";
 
             try {
                 const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
@@ -67,22 +98,36 @@
                         messages: [
                             { 
                                 role: "system", 
-                                content: `Jsi špičkový scénárista pro TikTok a YouTube. Piš napínavé, šokující a emočně silné příběhy v češtině. Rozděl příběh na 'SCÉNA 1, SCÉNA 2...' a ke každé scéně přidej krátký popis, co by mělo být vidět na pozadí.` 
+                                content: `Jsi profesionální scénárista pro virální videa na sociálních sítích. Piš v češtině. Tvým úkolem je napsat napínavý scénář na téma, které zadá uživatel. Struktura: 1. Silný háček (hook) hned na začátku, 2. Gradace příběhu, 3. Šokující závěr. Rozděl text na vizuální scény.` 
                             },
-                            { role: "user", content: `Téma: ${topic}, délka: ${length}` }
-                        ]
+                            { role: "user", content: `Téma: ${input}, Typ: ${length}` }
+                        ],
+                        temperature: 0.8
                     })
                 });
 
                 const data = await response.json();
-                resultText.innerText = data.choices[0].message.content;
-                resultBox.classList.remove('hidden');
-            } catch (e) {
-                alert("Chyba: Zkontroluj svůj Groq klíč!");
+                
+                if (data.error) {
+                    alert("Chyba API: " + data.error.message);
+                } else {
+                    resultText.innerText = data.choices[0].message.content;
+                    resultBox.classList.remove('hidden');
+                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                }
+            } catch (error) {
+                alert("Něco se nepovedlo. Zkontroluj klíč.");
             } finally {
-                btn.innerText = "Vytvořit virální scénář ✨";
+                btn.innerText = "Vygenerovat scénář";
                 btn.disabled = false;
+                btn.style.opacity = "1";
             }
+        }
+
+        function copyText() {
+            const text = document.getElementById('resultText').innerText;
+            navigator.clipboard.writeText(text);
+            alert("Zkopírováno!");
         }
     </script>
 </body>
