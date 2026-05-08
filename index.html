@@ -1,130 +1,483 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE PUPPETEER | AI Brand Engine</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=Outfit:wght@400;900&display=swap" rel="stylesheet">
+    <title>AlphaMax - Ultimate Looksmaxing Guide</title>
     <style>
-        body { font-family: 'Outfit', sans-serif; background: #000; color: #fff; margin: 0; overflow-x: hidden; }
-        .bg-matrix {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, #1e1b4b 0%, #000 80%);
-            z-index: -1;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .neon-border { border: 1px solid rgba(99, 102, 241, 0.4); box-shadow: 0 0 20px rgba(99, 102, 241, 0.2); }
-        .glitch-text { font-family: 'Space Grotesk', sans-serif; text-transform: uppercase; letter-spacing: 0.3em; }
-        .input-dark { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 1rem; color: #fff; padding: 1.5rem; outline: none; transition: 0.3s; }
-        .input-dark:focus { border-color: #6366f1; box-shadow: 0 0 15px rgba(99, 102, 241, 0.3); }
-        .btn-fire { background: linear-gradient(90deg, #6366f1, #a855f7); font-weight: 900; transition: 0.4s; }
-        .btn-fire:hover { transform: scale(1.02); filter: brightness(1.2); }
-    </style>
-</head>
-<body class="p-6 md:p-12">
-    <div class="bg-matrix"></div>
 
-    <div class="max-w-5xl mx-auto">
-        <header class="mb-16 flex justify-between items-end">
-            <div>
-                <h2 class="glitch-text text-indigo-500 text-xs mb-2 italic">Operation: Digital Empire</h2>
-                <h1 class="text-6xl font-black tracking-tighter">PUPPETEER <span class="text-indigo-600">v1.0</span></h1>
-            </div>
-            <div class="text-right hidden md:block">
-                <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Model Status</p>
-                <p class="text-green-500 font-mono text-sm">LLAMA-3.3-70B-ONLINE</p>
-            </div>
-        </header>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f3460;
+            --highlight: #e94560;
+            --text: #ffffff;
+            --text-secondary: #b0b0b0;
+        }
 
-        <main class="grid lg:grid-cols-1 gap-8">
-            <div class="bg-white/5 p-8 md:p-12 rounded-[2.5rem] neon-border backdrop-blur-xl">
-                <div class="space-y-8">
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">Tvůj záměr / Cíl (např. Prodávat e-book o krypto podvodech)</label>
-                        <textarea id="mainGoal" class="w-full h-40 input-dark resize-none text-xl font-light" placeholder="Co chceš dneska ovládnout?"></textarea>
-                    </div>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+        }
 
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">Strategický režim</label>
-                            <select id="mode" class="w-full input-dark cursor-pointer font-bold appearance-none">
-                                <option value="Kontroverzní Viral Hooky">KONTROVERZNÍ HOOKY</option>
-                                <option value="Psychologický prodejní scénář">PRODEJNÍ PSYCHOLOGIE</option>
-                                <option value="Hater-Farming (Vyvolání hádky)">VYVOLÁNÍ KONFLIKTU</option>
-                                <option value="Stavba mýtu o brandu">STAVBA MÝTU</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">Platforma</label>
-                            <select id="platform" class="w-full input-dark cursor-pointer font-bold appearance-none">
-                                <option value="TikTok / Reels">TIKTOK / REELS</option>
-                                <option value="YouTube Shorts">YOUTUBE SHORTS</option>
-                                <option value="X (Twitter) Thread">X (TWITTER)</option>
-                            </select>
-                        </div>
-                    </div>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-                    <button onclick="executeInference()" id="execBtn" class="btn-fire w-full py-6 rounded-2xl text-xl tracking-widest uppercase">
-                        SPUSTIT MANIPULACI
-                    </button>
-                </div>
+        /* Header */
+        header {
+            background: var(--secondary);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
 
-                <div id="resultBox" class="hidden mt-12 animate-pulse">
-                    <div class="h-px bg-gradient-to-r from-transparent via-indigo-500 to-transparent mb-12"></div>
-                    <div class="flex justify-between items-center mb-6">
-                        <span class="text-xs font-black text-indigo-400 uppercase tracking-widest">Generovaný výstup</span>
-                        <button onclick="copyOut()" class="text-xs hover:text-indigo-400 transition">KOPIE</button>
-                    </div>
-                    <div id="output" class="text-slate-200 leading-relaxed text-2xl font-light italic whitespace-pre-wrap"></div>
-                </div>
-            </div>
-        </main>
-    </div>
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    <script>
-        async function executeInference() {
-            const apiKey = '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'; // ZDE VLOŽ KLÍČ
-            const goal = document.getElementById('mainGoal').value;
-            const mode = document.getElementById('mode').value;
-            const platform = document.getElementById('platform').value;
-            const btn = document.getElementById('execBtn');
-            const resultBox = document.getElementById('resultBox');
-            const output = document.getElementById('output');
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--highlight);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
 
-            if (!goal) return alert("Zadej cíl operace.");
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
 
-            btn.innerText = "PROPOJUJI NEURONY...";
-            btn.disabled = true;
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
 
-            const sysPrompt = `Jsi elitní stratég pro digitální manipulaci a branding. Tvůj úkol: ${mode} pro platformu ${platform}. 
-            Cíl uživatele: ${goal}. Piš v ČEŠTINĚ. Buď agresivní, provokativní a psychologicky přesný. 
-            Nepoužívej klišé. Používej silná slova a strukturu, která nutí k akci.`;
+        .nav-links a:hover {
+            color: var(--highlight);
+        }
 
-            try {
-                const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${apiKey}` },
-                    body: JSON.stringify({
-                        model: "llama-3.3-70b-versatile",
-                        messages: [{ role: "system", content: sysPrompt }, { role: "user", content: goal }],
-                        temperature: 0.9
-                    })
-                });
-                const data = await res.json();
-                output.innerText = data.choices[0].message.content;
-                resultBox.classList.remove('hidden');
-                resultBox.classList.remove('animate-pulse');
-            } catch (e) {
-                alert("Systémová chyba: " + e.message);
-            } finally {
-                btn.innerText = "SPUSTIT MANIPULACI";
-                btn.disabled = false;
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26,26,46,0.9), rgba(26,26,46,0.9)), 
+                        url('https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--highlight), #ff6b9d);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: var(--text-secondary);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--highlight);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(233,69,96,0.3);
+        }
+
+        /* Features Grid */
+        .features {
+            padding: 5rem 0;
+            background: var(--secondary);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--highlight);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--primary);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: transform 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--highlight);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--highlight);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Progress Tracker */
+        .progress-section {
+            padding: 5rem 0;
+        }
+
+        .progress-tracker {
+            background: var(--secondary);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        .progress-bar {
+            height: 20px;
+            background: var(--primary);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--highlight));
+            width: 0%;
+            transition: width 1s ease-in-out;
+        }
+
+        /* Resources */
+        .resources {
+            padding: 5rem 0;
+            background: var(--secondary);
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .resource-card {
+            background: var(--primary);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .resource-card:hover {
+            transform: scale(1.05);
+        }
+
+        .resource-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .resource-content {
+            padding: 1.5rem;
+        }
+
+        /* Community */
+        .community {
+            padding: 5rem 0;
+        }
+
+        .forum-preview {
+            background: var(--secondary);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        .forum-post {
+            background: var(--primary);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 10px;
+            border-left: 4px solid var(--highlight);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--highlight);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--secondary);
+                flex-direction: column;
+                padding: 1rem;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
             }
         }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">ALPHAMAX</div>
+            <button class="mobile-menu-btn">☰</button>
+            <nav class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#features">Features</a>
+                <a href="#progress">Progress</a>
+                <a href="#resources">Resources</a>
+                <a href="#community">Community</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
 
-        function copyOut() {
-            navigator.clipboard.writeText(document.getElementById('output').innerText);
-            alert("Uloženo do paměti.");
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>MAXIMIZE YOUR GENETIC POTENTIAL</h1>
+            <p>Unlock your true physical potential with science-backed looksmaxing strategies. From facial aesthetics to physique optimization, we provide the ultimate guide to maximizing your appearance.</p>
+            <a href="#features" class="cta-button">BEGIN YOUR JOURNEY</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">PILLARS OF LOOKSMAXING</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">💪</div>
+                    <h3>Physique Optimization</h3>
+                    <p>Advanced workout routines, nutrition plans, and supplementation strategies for maximum muscle growth and fat loss.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">😎</div>
+                    <h3>Facial Aesthetics</h3>
+                    <p>Mewing techniques, skincare routines, and facial exercises to enhance bone structure and skin quality.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👔</div>
+                    <h3>Style & Grooming</h3>
+                    <p>Wardrobe optimization, grooming protocols, and style guides tailored to your body type and facial structure.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>Mindset & Game</h3>
+                    <p>Confidence building, social skills development, and psychological optimization for maximum social impact.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Progress Tracker -->
+    <section id="progress" class="progress-section">
+        <div class="container">
+            <h2 class="section-title">YOUR PROGRESS TRACKER</h2>
+            <div class="progress-tracker">
+                <h3>Looksmaxing Journey Progress</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill">45%</div>
+                </div>
+                <p>Track your improvements in real-time. Set goals and monitor your transformation journey.</p>
+                <button onclick="updateProgress()" class="cta-button" style="margin-top: 1rem;">UPDATE PROGRESS</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources -->
+    <section id="resources" class="resources">
+        <div class="container">
+            <h2 class="section-title">ESSENTIAL RESOURCES</h2>
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <img src="https://images.unsplash.com/photo-1534367507877-0edd93bd013b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Workout Guide">
+                    <div class="resource-content">
+                        <h3>Advanced Workout Protocols</h3>
+                        <p>Complete guide to hypertrophy training and strength development</p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Nutrition">
+                    <div class="resource-content">
+                        <h3>Nutrition Blueprint</h3>
+                        <p>Macro tracking, meal timing, and supplementation guide</p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Skincare">
+                    <div class="resource-content">
+                        <h3>Skincare & Grooming</h3>
+                        <p>Complete skincare routines and grooming protocols</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community -->
+    <section id="community" class="community">
+        <div class="container">
+            <h2 class="section-title">COMMUNITY FORUM</h2>
+            <div class="forum-preview">
+                <h3>Latest Discussions</h3>
+                <div class="forum-post">
+                    <h4>Mewing Results After 6 Months</h4>
+                    <p>Posted by AlphaMale123 • 2 hours ago</p>
+                </div>
+                <div class="forum-post">
+                    <h4>Best Shoulder Workouts for V-Taper</h4>
+                    <p>Posted by GymBro • 5 hours ago</p>
+                </div>
+                <div class="forum-post">
+                    <h4>Style Guide for Winter Season</h4>
+                    <p>Posted by FashionMaxxer • 1 day ago</p>
+                </div>
+                <a href="#community" class="cta-button" style="margin-top: 1rem;">JOIN DISCUSSION</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="logo">ALPHAMAX</div>
+            <p>The ultimate looksmaxing community for maximizing genetic potential</p>
+            <div class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact</a>
+                <a href="#disclaimer">Disclaimer</a>
+            </div>
+            <p style="color: var(--text-secondary); margin-top: 2rem;">
+                &copy; 2024 AlphaMax. All rights reserved. Results may vary.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Progress tracker
+        let progress = 45;
+        const progressFill = document.getElementById('progressFill');
+
+        function updateProgress() {
+            progress += Math.floor(Math.random() * 10) + 1;
+            if (progress > 100) progress = 100;
+            progressFill.style.width = progress + '%';
+            progressFill.textContent = progress + '%';
+            
+            // Show notification
+            alert(`Progress updated to ${progress}%! Keep grinding!`);
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize progress bar
+        window.onload = function() {
+            progressFill.style.width = progress + '%';
         }
     </script>
 </body>
