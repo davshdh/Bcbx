@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Pou Koupelna Judy</title>
+    <title>Pou Koupelna</title>
     <style>
         * { box-sizing: border-box; }
         
@@ -12,113 +12,119 @@
             padding: 0;
             height: 100%;
             width: 100%;
-            background-color: #00d2e5; /* Ta jasná koupelnová modrá */
-            font-family: Arial, sans-serif;
+            background-color: #00d2e5; /* Ta přesná modrá */
+            font-family: 'Arial Rounded MT Bold', 'Helvetica', sans-serif;
             overflow: hidden;
             display: flex;
             flex-direction: column;
         }
 
-        /* HORNÍ LIŠTA - STATISTIKY */
-        .top-bar {
+        /* HORNÍ LIŠTA: Mince, Energie, Level */
+        .header-stats {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 15px;
+            padding: 5px 10px;
             width: 100%;
+            background: rgba(255, 255, 255, 0.1);
         }
 
-        .coin-box { height: 55px; }
-        .stats-box { height: 40px; }
-        .level-box { height: 55px; }
+        .icon-coin { height: 50px; }
+        .icon-bars { height: 35px; }
+        .icon-level { height: 50px; }
 
-        /* NAVIGACE - KOUPELNA */
-        .room-nav {
+        /* NAVIGACE: Koupelna bar se šipkami */
+        .room-navigation {
             display: flex;
             justify-content: center;
-            align-items: center;
             width: 100%;
-            margin-top: 5px;
+            margin-top: 2px;
         }
 
-        .room-banner {
-            height: 50px; /* Lišta s nápisem Koupelna a šipkami */
+        .room-bar {
+            height: 55px; /* Přesná velikost pro lištu "Koupelna" */
         }
 
-        /* POSTAVA - JUDY */
-        .game-scene {
+        /* STŘED: Velká Judy Hoops */
+        .main-game-area {
             flex-grow: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding-bottom: 20px;
         }
 
-        .judy-hoops {
-            height: 65vh; /* Judy je hlavní, tak musí být velká */
-            object-fit: contain;
+        .character-judy {
+            height: 65vh;
+            filter: drop-shadow(0px 4px 4px rgba(0,0,0,0.1));
         }
 
-        /* SPODNÍ LIŠTA - POLICE */
-        .shelf {
-            background-color: #00899b; /* Tmavší modrá police */
+        /* SPODNÍ POLICE: Tmavá modrá */
+        .bottom-shelf {
+            background-color: #00899b; /* Tmavě modrá barva z originálu */
             display: flex;
             justify-content: space-around;
             align-items: center;
-            padding: 15px 0 25px 0;
-            border-top: 3px solid rgba(0,0,0,0.15);
+            padding: 10px 0 15px 0;
+            border-top: 4px solid #007685;
         }
 
-        .shelf-item {
+        .shelf-slot {
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 30%;
+            width: 33%;
         }
 
-        .shelf-item img {
-            height: 85px; /* Velikost mýdla, sprchy a obchodu */
-            margin-bottom: 8px;
+        .shelf-slot img {
+            height: 75px;
+            margin-bottom: 2px;
         }
 
-        .label {
+        /* TEXTY: Bílý nápis s tlustým černým obrysem */
+        .item-text {
             color: white;
             font-size: 20px;
-            font-weight: bold;
-            text-transform: capitalize;
-            text-shadow: 2px 2px 0px #000; /* Typický Pou styl písma */
-            letter-spacing: 1px;
+            font-weight: 900;
+            text-align: center;
+            /* Tento efekt dělá ten "Pou" styl nápisů */
+            text-shadow: 
+                -2px -2px 0 #000,  
+                 2px -2px 0 #000,
+                -2px  2px 0 #000,
+                 2px  2px 0 #000,
+                 3px  3px 0 #000;
         }
+
     </style>
 </head>
 <body>
 
-    <div class="top-bar">
-        <img src="https://i.ibb.co/PzN3DvcK/20260515-194812557.png" class="coin-box" alt="Money">
-        <img src="https://i.ibb.co/5W5Pt3yJ/image-3.jpg" class="stats-box" alt="Bars">
-        <img src="https://i.ibb.co/3mq1t2RW/20260515-194952963.png" class="level-box" alt="Level">
+    <div class="header-stats">
+        <img src="https://i.ibb.co/PzN3DvcK/20260515-194812557.png" class="icon-coin">
+        <img src="https://i.ibb.co/5W5Pt3yJ/image-3.jpg" class="icon-bars">
+        <img src="https://i.ibb.co/3mq1t2RW/20260515-194952963.png" class="icon-level">
     </div>
 
-    <div class="room-nav">
-        <img src="https://i.ibb.co/ksjYDqyW/20260515-191953594.png" class="room-banner" alt="Koupelna">
+    <div class="room-navigation">
+        <img src="https://i.ibb.co/ksjYDqyW/20260515-191953594.png" class="room-bar">
     </div>
 
-    <div class="game-scene">
-        <img src="https://i.ibb.co/B2PZvHtB/20260515-185922931.png" class="judy-hoops" alt="Judy">
+    <div class="main-game-area">
+        <img src="https://i.ibb.co/B2PZvHtB/20260515-185922931.png" class="character-judy">
     </div>
 
-    <div class="shelf">
-        <div class="shelf-item">
-            <img src="https://i.ibb.co/rJ9ZHV2/20260515-193346823.png" alt="Sprcha">
-            <span class="label">Sprcha</span>
+    <div class="bottom-shelf">
+        <div class="shelf-slot">
+            <img src="https://i.ibb.co/rJ9ZHV2/20260515-193346823.png">
+            <div class="item-text">Sprcha</div>
         </div>
-        <div class="shelf-item">
-            <img src="https://i.ibb.co/5gp47LNG/20260515-192907388.png" alt="Mýdlo">
-            <span class="label">Mýdlo</span>
+        <div class="shelf-slot">
+            <img src="https://i.ibb.co/5gp47LNG/20260515-192907388.png">
+            <div class="item-text">Mýdlo</div>
         </div>
-        <div class="shelf-item">
-            <img src="https://i.ibb.co/fhwWK9J/20260515-193534046.png" alt="Obchod">
-            <span class="label">Obchod</span>
+        <div class="shelf-slot">
+            <img src="https://i.ibb.co/fhwWK9J/20260515-193534046.png">
+            <div class="item-text">Obchod</div>
         </div>
     </div>
 
