@@ -3,128 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pou Koupelna FIX</title>
+    <title>Pou Koupelna - Přesná Kopie</title>
     <style>
-        * { box-sizing: border-box; }
         body {
             margin: 0;
-            background-color: #1a1a1a;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            font-family: sans-serif;
+            background-color: #222;
+            font-family: Arial, sans-serif;
         }
 
-        .game-container {
+        /* Hlavní okno hry */
+        .game-window {
             width: 360px;
             height: 640px;
-            background-color: #00d2ff;
-            border: 4px solid #000;
-            display: flex;
-            flex-direction: column; /* Řadí prvky pod sebe jako patra */
+            background-color: #21cbf3; /* Jasně světle modré pozadí */
             position: relative;
             overflow: hidden;
+            border: 2px solid #000;
         }
 
-        /* 1. PATRO: Statistiky a Levely */
-        .header-top {
-            background-color: #b3f0ff;
-            height: 60px;
+        /* 1. Světle modrá lišta nahoře (Staty) */
+        .top-bar-1 {
+            position: absolute;
+            top: 25px;
+            width: 100%;
+            height: 42px;
+            background-color: #8bedfe;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 10px;
-            border-bottom: 2px solid rgba(0,0,0,0.1);
+            padding: 0 5px;
+            box-sizing: border-box;
+            z-index: 1; /* Pod Judy */
         }
 
-        /* 2. PATRO: Navigace (Koupelna) */
-        .header-nav {
-            background-color: rgba(255, 255, 255, 0.5);
-            height: 50px;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-        }
+        .coiny { height: 65px; margin-left: -5px; } /* Záměrně větší, aby přesahovaly lištu */
+        .stats-bar { height: 35px; border: 2px solid black; border-radius: 4px; }
+        .level { height: 55px; }
 
-        /* STŘED: Judy */
-        .main-area {
-            flex-grow: 1;
+        /* 2. Bílá lišta nahoře (Navigace) */
+        .top-bar-2 {
+            position: absolute;
+            top: 75px;
+            width: 100%;
+            height: 45px;
+            background-color: #ffffff;
             display: flex;
             justify-content: center;
-            align-items: flex-end; /* Judy stojí na podlaze */
-            padding-bottom: 0;
+            align-items: center;
+            z-index: 1; /* Pod Judy */
         }
 
-        .main-area img {
-            width: 250px; /* Zmenšeno, aby nepřekrývala menu */
-            margin-bottom: -10px; 
+        .koupelna-title { height: 35px; }
+
+        /* Makety tlačítek (Foťák, Šipky, ?), protože nemají vlastní odkaz */
+        .mock-btn {
+            position: absolute;
+            height: 35px;
+            width: 35px;
+            background: white;
+            border: 2px solid black;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .btn-cam { left: 10px; }
+        .btn-left { left: 50px; }
+        .btn-right { right: 50px; }
+        .btn-q { right: 10px; }
+
+        /* Postava - Judy (Musí být nad menu!) */
+        .judy {
+            position: absolute;
+            bottom: 85px; /* Stojí na tmavé podlaze */
+            left: 50%;
+            transform: translateX(-50%);
+            height: 500px; /* Dostatečně vysoká, aby uši šly přes menu */
+            z-index: 10; /* VYŠŠÍ Z-INDEX než horní lišty! */
+            pointer-events: none;
         }
 
-        /* 3. PATRO: Podlaha a Menu */
-        .floor-menu {
-            background-color: #00add8;
-            height: 110px;
+        /* Tmavší podlaha dole */
+        .floor {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 95px;
+            background-color: #17a2c9; /* Tmavší modrá */
             display: flex;
             justify-content: space-around;
-            align-items: center;
-            border-top: 2px solid rgba(0,0,0,0.1);
+            align-items: flex-end;
+            padding-bottom: 8px;
+            box-sizing: border-box;
+            z-index: 5;
         }
 
-        .item {
+        .bottom-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            font-weight: bold;
-            font-size: 14px;
+            gap: 2px;
         }
 
-        .item img {
-            height: 60px;
-            margin-bottom: 5px;
+        .bottom-item img { height: 60px; }
+
+        /* Maketa pro mýdlo */
+        .soap-mock {
+            width: 60px;
+            height: 40px;
+            background-color: #4da6ff;
+            border: 2px solid #0059b3;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            transform: rotate(-10deg);
         }
 
-        /* Velikosti ikonek */
-        .img-coin { height: 40px; }
-        .img-stats { height: 35px; }
-        .img-level { height: 45px; }
-        .img-room { height: 35px; }
-
+        /* Texty s bílým okrajem (černá výplň) */
+        .bottom-item span {
+            color: black;
+            font-family: "Arial Black", sans-serif;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            text-shadow: 
+                -1.5px -1.5px 0 #fff,  
+                 1.5px -1.5px 0 #fff,
+                -1.5px  1.5px 0 #fff,
+                 1.5px  1.5px 0 #fff;
+        }
     </style>
 </head>
 <body>
 
-    <div class="game-container">
-        <div class="header-top">
-            <img src="https://i.ibb.co/PzN3DvcK/20260515-194812557.png" class="img-coin">
-            <img src="https://i.ibb.co/5W5Pt3yJ/image-3.jpg" class="img-stats">
-            <img src="https://i.ibb.co/3YCdK3Sm/20260515-223551410.png" class="img-level">
+    <div class="game-window">
+        
+        <div class="top-bar-1">
+            <img src="https://i.ibb.co/PzN3DvcK/20260515-194812557.png" class="coiny" alt="Coiny">
+            <img src="https://i.ibb.co/5W5Pt3yJ/image-3.jpg" class="stats-bar" alt="Staty">
+            <img src="https://i.ibb.co/3YCdK3Sm/20260515-223551410.png" class="level" alt="Level">
         </div>
 
-        <div class="header-nav">
-            <span style="font-size: 20px;">📷</span>
-            <img src="https://i.ibb.co/ksjYDqyW/20260515-191953594.png" class="img-room">
-            <span style="font-size: 20px;">❓</span>
+        <div class="top-bar-2">
+            <div class="mock-btn btn-cam">📷</div>
+            <div class="mock-btn btn-left">&lt;</div>
+            <img src="https://i.ibb.co/ksjYDqyW/20260515-191953594.png" class="koupelna-title" alt="Koupelna">
+            <div class="mock-btn btn-right">&gt;</div>
+            <div class="mock-btn btn-q">?</div>
         </div>
 
-        <div class="main-area">
-            <img src="https://i.ibb.co/B2PZvHtB/20260515-185922931.png" alt="Judy">
-        </div>
+        <img src="https://i.ibb.co/B2PZvHtB/20260515-185922931.png" class="judy" alt="Judy">
 
-        <div class="floor-menu">
-            <div class="item">
-                <img src="https://i.ibb.co/rJ9ZHV2/20260515-193346823.png">
+        <div class="floor">
+            <div class="bottom-item">
+                <img src="https://i.ibb.co/rJ9ZHV2/20260515-193346823.png" alt="Sprcha">
                 <span>Sprcha</span>
             </div>
-            <div class="item">
-                <div style="height: 60px; width: 60px; background: rgba(0,0,0,0.1); border-radius: 10px;"></div>
+            
+            <div class="bottom-item">
+                <div class="soap-mock"></div>
                 <span>Mýdlo</span>
             </div>
-            <div class="item">
-                <img src="https://i.ibb.co/fhwWK9J/20260515-193534046.png">
+
+            <div class="bottom-item">
+                <img src="https://i.ibb.co/fhwWK9J/20260515-193534046.png" alt="Obchod">
                 <span>Obchod</span>
             </div>
         </div>
+
     </div>
 
 </body>
