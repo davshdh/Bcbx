@@ -12,113 +12,118 @@
             padding: 0;
             height: 100%;
             width: 100%;
-            background-color: #00d2e5; /* Jasná koupelnová modrá */
+            background-color: #00d2e5; /* Světle modrá barva koupelny */
             font-family: Arial, sans-serif;
             overflow: hidden;
             display: flex;
             flex-direction: column;
         }
 
-        /* HORNÍ LIŠTA: Energie, Mince, Level */
-        .top-stats {
+        /* HORNÍ LIŠTA: Coiny, Statistiky, Levely */
+        .header-top {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 8px 12px;
+            padding: 10px 15px;
             width: 100%;
         }
 
-        .icon-coin { height: 50px; }
-        .icon-bars { height: 38px; }
-        .icon-level { height: 50px; }
+        .coin-img { height: 50px; }
+        .stats-img { height: 35px; }
+        .level-img { height: 50px; }
 
-        /* LIŠTA S NÁZVEM MÍSTNOSTI */
-        .nav-bar {
+        /* LIŠTA S NÁZVEM: Koupelna */
+        .room-nav {
             display: flex;
             justify-content: center;
             width: 100%;
             margin-top: 2px;
         }
 
-        .nav-img { height: 55px; }
+        .room-bar-img {
+            height: 55px;
+        }
 
-        /* STŘED - NOVÁ JUDY HOOPS */
-        .game-middle {
+        /* STŘEDNÍ ČÁST: Judy Hoops */
+        .game-main {
             flex-grow: 1;
             display: flex;
             justify-content: center;
             align-items: center;
+            padding-bottom: 10px;
         }
 
-        .character-judy {
-            height: 65vh; /* Velikost Judy na obrazovce */
+        .judy-img {
+            height: 65vh; /* Velikost postavy */
             object-fit: contain;
         }
 
-        /* SPODNÍ POLICE S PŘEDMĚTY */
-        .bottom-shelf {
-            background-color: #00899b; /* Tmavě modrá police */
+        /* SPODNÍ PANEL: Police s předměty */
+        .footer-shelf {
+            background-color: #00899b; /* Tmavě modrá barva police */
             display: flex;
             justify-content: space-around;
             align-items: center;
-            padding: 10px 0 20px 0;
-            border-top: 4px solid rgba(0,0,0,0.15);
+            padding: 15px 0 25px 0;
+            border-top: 4px solid #007685;
         }
 
-        .item-box {
+        .shelf-item {
             display: flex;
             flex-direction: column;
             align-items: center;
             width: 33%;
         }
 
-        .item-box img {
-            height: 80px;
-            margin-bottom: 3px;
+        .shelf-item img {
+            height: 85px; /* Velikost ikon mýdla a sprchy */
+            margin-bottom: 5px;
         }
 
-        /* STYL TEXTU S ČERNÝM OBRYSEM */
-        .label {
+        /* STYL TEXTU: Bílý s tlustým černým obrysem */
+        .item-label {
             color: white;
             font-size: 20px;
             font-weight: 900;
+            text-transform: capitalize;
             text-shadow: 
                 -2px -2px 0 #000,  
                  2px -2px 0 #000,
                 -2px  2px 0 #000,
                  2px  2px 0 #000,
-                 3px  3px 2px #000;
+                 3px 3px 2px #000;
         }
+
     </style>
 </head>
 <body>
 
-    <div class="top-stats">
-        <img src="https://i.ibb.co/PzN3DvcK/20260515-194812557.png" class="icon-coin" alt="Coiny">
-        <img src="https://i.ibb.co/5W5Pt3yJ/image-3.jpg" class="icon-bars" alt="Bary">
-        <img src="https://i.ibb.co/3mq1t2RW/20260515-194952963.png" class="icon-level" alt="Level">
+    <div class="header-top">
+        <img src="https://i.ibb.co/PzN3DvcK/20260515-194812557.png" class="coin-img" alt="Coiny">
+        <img src="https://i.ibb.co/5W5Pt3yJ/image-3.jpg" class="stats-img" alt="Bary">
+        <img src="https://i.ibb.co/3mq1t2RW/20260515-194952963.png" class="level-img" alt="Level">
     </div>
 
-    <div class="nav-bar">
-        <img src="https://i.ibb.co/ksjYDqyW/20260515-191953594.png" class="nav-img" alt="Koupelna">
+    <div class="room-nav">
+        <img src="https://i.ibb.co/ksjYDqyW/20260515-191953594.png" class="room-bar-img" alt="Koupelna">
     </div>
 
-    <div class="game-middle">
-        <img src="https://i.ibb.co/B2PZvHtB/20260515-185922931.png" class="character-judy" alt="Judy Hoops">
+    <div class="game-main">
+        <img src="https://i.ibb.co/B2PZvHtB/20260515-185922931.png" class="judy-img" alt="Judy Hoops">
     </div>
 
-    <div class="bottom-shelf">
-        <div class="item-box">
+    <div class="footer-shelf">
+        <div class="shelf-item">
             <img src="https://i.ibb.co/rJ9ZHV2/20260515-193346823.png" alt="Sprcha">
-            <div class="label">Sprcha</div>
+            <div class="item-label">Sprcha</div>
         </div>
-        <div class="item-box">
+        <div class="shelf-item">
             <img src="https://i.ibb.co/5gp47LNG/20260515-192907388.png" alt="Mýdlo">
-            <div class="label">Mýdlo</div>
+            <div class="item-label">Mýdlo</div>
         </div>
-        <div class="item-box">
+        <div class="shelf-item">
             <img src="https://i.ibb.co/fhwWK9J/20260515-193534046.png" alt="Obchod">
-            <div class="label">Obchod</div>
+            <div class="item-label">Obchod</div>
         </div>
     </div>
 
