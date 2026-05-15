@@ -2,108 +2,100 @@
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pou Koupelna - Judy Hoops</title>
     <style>
         body {
-            background-color: #222;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             margin: 0;
+            padding: 0;
+            background-color: #f0f0f0; /* Světlé pozadí jako v koupelně */
             font-family: Arial, sans-serif;
-        }
-
-        .pou-screen {
-            width: 360px;
-            height: 640px;
-            background-color: #55ffff; /* Tyrkysová barva koupelny */
-            position: relative;
-            border: 5px solid #000;
-            overflow: hidden;
-        }
-
-        /* HORNÍ ČÁST - STATY */
-        .header-stats {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 5px 10px;
-            height: 50px;
-        }
-        .header-stats img { height: 40px; }
-
-        /* NAVIGACE - KOUPELNA */
-        .nav-bar {
-            width: 100%;
-            text-align: center;
-            margin-top: 5px;
-        }
-        .nav-bar img { width: 95%; }
-
-        /* POSTAVA */
-        .judy-hoops {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -40%);
-            width: 280px;
-        }
-
-        /* SPODNÍ ČÁST - NÁSTROJE */
-        .bottom-menu {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 100px;
-            background-color: rgba(0, 0, 0, 0.1); /* Jemný stín podlahy */
-            display: flex;
-            justify-content: space-around;
-            align-items: flex-end;
-            padding-bottom: 10px;
-        }
-        
-        .tool-box {
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 30%;
+            height: 100vh;
+            overflow: hidden;
         }
 
-        .tool-box img {
-            max-width: 80px;
-            max-height: 80px;
+        /* Horní lišta se statistikami */
+        .top-bar {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px 0;
+            background: rgba(255,255,255,0.5);
+        }
+
+        .stat-icon { height: 40px; }
+        .coin-icon { height: 35px; }
+        .level-icon { height: 45px; }
+
+        /* Indikátor místnosti (Koupelna) */
+        .room-indicator {
+            margin-top: 10px;
+            height: 50px;
+        }
+
+        /* Hlavní herní plocha */
+        .game-area {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 100%;
+        }
+
+        .character {
+            width: 200px; /* Judy Hoops */
+            z-index: 2;
+        }
+
+        /* Spodní lišta s předměty */
+        .bottom-bar {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            padding-bottom: 20px;
+        }
+
+        .item {
+            width: 80px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .item:hover {
+            transform: scale(1.1);
+        }
+
+        .shop-btn {
+            width: 70px;
         }
     </style>
 </head>
 <body>
 
-<div class="pou-screen">
-    <div class="header-stats">
-        <img src="https://i.ibb.co/PzN3DvcK/20260515-194812557.png" alt="Coiny">
-        <img src="https://i.ibb.co/5W5Pt3yJ/image-3.jpg" alt="Bary">
-        <img src="https://i.ibb.co/3mq1t2RW/20260515-194952963.png" alt="Levels">
+    <div class="top-bar">
+        <img src="https://i.ibb.co/3mq1t2RW/20260515-194952963.png" alt="Level" class="level-icon">
+        <img src="https://i.ibb.co/5W5Pt3yJ/image-3.jpg" alt="Stats" class="stat-icon">
+        <img src="https://i.ibb.co/PzN3DvcK/20260515-194812557.png" alt="Coins" class="coin-icon">
     </div>
 
-    <div class="nav-bar">
-        <img src="https://i.ibb.co/ksjYDqyW/20260515-191953594.png" alt="Koupelna lišta">
+    <img src="https://i.ibb.co/ksjYDqyW/20260515-191953594.png" alt="Koupelna" class="room-indicator">
+
+    <div class="game-area">
+        <img src="https://i.ibb.co/B2PZvHtB/20260515-185922931.png" alt="Judy Hoops" class="character">
     </div>
 
-    <img src="https://i.ibb.co/B2PZvHtB/20260515-185922931.png" alt="Judy Hoops" class="judy-hoops">
+    <div class="bottom-bar">
+        <img src="https://i.ibb.co/5gp47LNG/20260515-192907388.png" alt="Mýdlo" class="item">
+        
+        <img src="https://i.ibb.co/fhwWK9J/20260515-193534046.png" alt="Obchod" class="shop-btn">
 
-    <div class="bottom-menu">
-        <div class="tool-box">
-            <img src="https://i.ibb.co/rJ9ZHV2/20260515-193346823.png" alt="Sprcha">
-        </div>
-        <div class="tool-box">
-            <img src="https://i.ibb.co/5gp47LNG/20260515-192907388.png" alt="Mýdlo">
-        </div>
-        <div class="tool-box">
-            <img src="https://i.ibb.co/fhwWK9J/20260515-193534046.png" alt="Obchod">
-        </div>
+        <img src="https://i.ibb.co/rJ9ZHV2/20260515-193346823.png" alt="Sprcha" class="item">
     </div>
-</div>
 
 </body>
 </html>
