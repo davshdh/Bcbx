@@ -1,113 +1,124 @@
-
 <!DOCTYPE html>
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Pou Koupelna Judy</title>
     <style>
+        * { box-sizing: border-box; }
+        
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
             width: 100%;
-            background-color: #00d2e5; /* Ta správná světle modrá */
+            background-color: #00d2e5; /* Ta jasná koupelnová modrá */
             font-family: Arial, sans-serif;
             overflow: hidden;
             display: flex;
             flex-direction: column;
         }
 
-        /* Horní sekce: Mince, Energie, Level */
-        .top-stats {
+        /* HORNÍ LIŠTA - STATISTIKY */
+        .top-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 5px 10px;
-            height: 50px;
+            padding: 10px 15px;
+            width: 100%;
         }
 
-        /* Sekce s nápisem Koupelna a šipkami */
+        .coin-box { height: 55px; }
+        .stats-box { height: 40px; }
+        .level-box { height: 55px; }
+
+        /* NAVIGACE - KOUPELNA */
         .room-nav {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 10px;
+            width: 100%;
             margin-top: 5px;
         }
 
-        /* Postava Judy Hoops */
-        .character-container {
+        .room-banner {
+            height: 50px; /* Lišta s nápisem Koupelna a šipkami */
+        }
+
+        /* POSTAVA - JUDY */
+        .game-scene {
             flex-grow: 1;
             display: flex;
             justify-content: center;
             align-items: center;
+            padding-bottom: 20px;
         }
 
-        .character-img {
-            height: 60vh; /* Judy bude pěkně velká uprostřed */
+        .judy-hoops {
+            height: 65vh; /* Judy je hlavní, tak musí být velká */
+            object-fit: contain;
         }
 
-        /* Spodní lišta - tmavší modrá */
-        .bottom-shelf {
-            background-color: #00899b; /* Tmavší odstín pro mýdlo a sprchu */
+        /* SPODNÍ LIŠTA - POLICE */
+        .shelf {
+            background-color: #00899b; /* Tmavší modrá police */
             display: flex;
             justify-content: space-around;
-            align-items: flex-end;
-            padding: 10px 0 20px 0;
-            border-top: 2px solid rgba(0,0,0,0.1);
+            align-items: center;
+            padding: 15px 0 25px 0;
+            border-top: 3px solid rgba(0,0,0,0.15);
         }
 
-        .item-box {
+        .shelf-item {
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 30%;
+        }
+
+        .shelf-item img {
+            height: 85px; /* Velikost mýdla, sprchy a obchodu */
+            margin-bottom: 8px;
+        }
+
+        .label {
             color: white;
+            font-size: 20px;
             font-weight: bold;
-            font-size: 18px;
-            text-shadow: 2px 2px 0px #000;
+            text-transform: capitalize;
+            text-shadow: 2px 2px 0px #000; /* Typický Pou styl písma */
+            letter-spacing: 1px;
         }
-
-        .item-box img {
-            height: 80px; /* Velikost mýdla a sprchy */
-            margin-bottom: 5px;
-        }
-
-        /* Pomocné třídy pro velikosti ikon nahoře */
-        .icon-coin { height: 45px; }
-        .icon-bars { height: 35px; }
-        .icon-level { height: 45px; }
-        .icon-room { height: 40px; }
     </style>
 </head>
 <body>
 
-    <div class="top-stats">
-        <img src="https://i.ibb.co/PzN3DvcK/20260515-194812557.png" class="icon-coin">
-        <img src="https://i.ibb.co/5W5Pt3yJ/image-3.jpg" class="icon-bars">
-        <img src="https://i.ibb.co/3mq1t2RW/20260515-194952963.png" class="icon-level">
+    <div class="top-bar">
+        <img src="https://i.ibb.co/PzN3DvcK/20260515-194812557.png" class="coin-box" alt="Money">
+        <img src="https://i.ibb.co/5W5Pt3yJ/image-3.jpg" class="stats-box" alt="Bars">
+        <img src="https://i.ibb.co/3mq1t2RW/20260515-194952963.png" class="level-box" alt="Level">
     </div>
 
     <div class="room-nav">
-        <img src="https://i.ibb.co/ksjYDqyW/20260515-191953594.png" class="icon-room">
+        <img src="https://i.ibb.co/ksjYDqyW/20260515-191953594.png" class="room-banner" alt="Koupelna">
     </div>
 
-    <div class="character-container">
-        <img src="https://i.ibb.co/B2PZvHtB/20260515-185922931.png" class="character-img" alt="Judy">
+    <div class="game-scene">
+        <img src="https://i.ibb.co/B2PZvHtB/20260515-185922931.png" class="judy-hoops" alt="Judy">
     </div>
 
-    <div class="bottom-shelf">
-        <div class="item-box">
+    <div class="shelf">
+        <div class="shelf-item">
             <img src="https://i.ibb.co/rJ9ZHV2/20260515-193346823.png" alt="Sprcha">
-            Sprcha
+            <span class="label">Sprcha</span>
         </div>
-        <div class="item-box">
+        <div class="shelf-item">
             <img src="https://i.ibb.co/5gp47LNG/20260515-192907388.png" alt="Mýdlo">
-            Mýdlo
+            <span class="label">Mýdlo</span>
         </div>
-        <div class="item-box">
+        <div class="shelf-item">
             <img src="https://i.ibb.co/fhwWK9J/20260515-193534046.png" alt="Obchod">
-            Obchod
+            <span class="label">Obchod</span>
         </div>
     </div>
 
