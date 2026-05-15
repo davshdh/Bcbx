@@ -7,7 +7,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #51C6FB;
+            background-color: #51C6FB; /* Modré pozadí */
             font-family: Arial, sans-serif;
             height: 100vh;
             display: flex;
@@ -15,107 +15,107 @@
             overflow: hidden;
         }
 
-        /* Horní lišta se statusy - úplně nahoře */
-        .top-status-bar {
-            background-color: #C1E9F9;
-            height: 40px;
+        /* Horní sekce se statusy */
+        .header-container {
+            width: 100%;
+            z-index: 10;
+        }
+
+        .status-bar {
+            background-color: #C0E8F9;
+            height: 45px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0 5px;
-            border-bottom: 2px solid #333;
+            border-bottom: 2px solid #000;
         }
 
-        .top-status-bar img {
-            height: 30px;
-        }
+        .status-bar img { height: 35px; }
 
-        /* Navigační lišta s názvem místnosti a ikonami */
-        .room-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 5px 10px;
+        /* Lišta Koupelna s šipkami */
+        .nav-bar {
+            width: 100%;
             height: 50px;
-        }
-
-        .room-nav img {
-            height: 45px;
-        }
-
-        /* Judy - uprostřed, ale hodně velká */
-        .character-container {
-            flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
+            margin-top: 5px;
         }
 
-        .character-container img {
-            height: 110%; /* Zvětšení postavy aby byla dominantní */
+        .nav-bar img { height: 45px; }
+
+        /* HLAVNÍ PROSTOR PRO JUDY */
+        .game-area {
+            flex: 1; /* Zabere zbytek místa mezi lištami */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .judy-character {
+            max-height: 90%; /* Zajišťuje, aby nezasahovala do lišt */
             object-fit: contain;
         }
 
-        /* Spodní lišta nástrojů */
-        .tools-bar {
+        /* SPODNÍ PANEL NÁSTROJŮ */
+        .footer-tools {
             height: 100px;
+            background-color: rgba(0, 0, 0, 0.05); /* Jemné odlišení spodku */
             display: flex;
             justify-content: space-around;
             align-items: flex-end;
-            padding-bottom: 5px;
-            position: relative;
+            padding-bottom: 10px;
         }
 
-        .tool-box {
+        .tool {
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-align: center;
-            font-size: 14px;
             font-weight: bold;
+            font-size: 16px;
         }
 
-        .tool-box img {
-            height: 60px; /* Menší ikony podle vzoru */
-        }
-
-        .tool-label {
-            margin-top: 2px;
+        .tool img {
+            height: 60px; /* Velikost ikon jako v Pouovi */
+            margin-bottom: 5px;
         }
 
     </style>
 </head>
 <body>
 
-    <div class="top-status-bar">
-        <img src="https://i.ibb.co/PzN3DvcK/20260515-194812557.png" alt="Coiny">
-        <img src="https://i.ibb.co/5W5Pt3yJ/image-3.jpg" alt="Statusy">
-        <img src="https://i.ibb.co/3YCdK3Sm/20260515-223551410.png" alt="Level">
+    <div class="header-container">
+        <div class="status-bar">
+            <img src="https://i.ibb.co/PzN3DvcK/20260515-194812557.png" alt="Coiny">
+            <img src="https://i.ibb.co/5W5Pt3yJ/image-3.jpg" alt="Stats">
+            <img src="https://i.ibb.co/3YCdK3Sm/20260515-223551410.png" alt="Level">
+        </div>
+
+        <div class="nav-bar">
+            <img src="https://i.ibb.co/ksjYDqyW/20260515-191953594.png" alt="Koupelna">
+        </div>
     </div>
 
-    <div class="room-nav">
-        <img src="https://i.ibb.co/ksjYDqyW/20260515-191953594.png" alt="Navigace Koupelna" style="width: 100%; object-fit: contain;">
+    <div class="game-area">
+        <img src="https://i.ibb.co/B2PZvHtB/20260515-185922931.png" alt="Judy" class="judy-character">
     </div>
 
-    <div class="character-container">
-        <img src="https://i.ibb.co/B2PZvHtB/20260515-185922931.png" alt="Judy Hoops">
-    </div>
-
-    <div class="tools-bar">
-        <div class="tool-box">
+    <div class="footer-tools">
+        <div class="tool">
             <img src="https://i.ibb.co/rJ9ZHV2/20260515-193346823.png" alt="Sprcha">
-            <div class="tool-label">Sprcha</div>
+            <span>Sprcha</span>
         </div>
 
-        <div class="tool-box">
-            <div style="height: 60px;"></div>
-            <div class="tool-label">Mýdlo</div>
+        <div class="tool">
+            <div style="height: 60px; width: 60px; background: rgba(255,255,255,0.2); border-radius: 10px;"></div>
+            <span>Mýdlo</span>
         </div>
 
-        <div class="tool-box">
+        <div class="tool">
             <img src="https://i.ibb.co/fhwWK9J/20260515-193534046.png" alt="Obchod">
-            <div class="tool-label">Obchod</div>
+            <span>Obchod</span>
         </div>
     </div>
 
