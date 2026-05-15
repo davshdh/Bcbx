@@ -2,146 +2,137 @@
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pou Koupelna - Judy Edition</title>
+    <title>Pou Koupelna - Judy</title>
     <style>
+        /* Základní nastavení stránky */
         body {
             margin: 0;
             padding: 0;
+            background-color: #333;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #222;
-            font-family: sans-serif;
+            font-family: Arial, sans-serif;
         }
 
-        /* Hlavní kontejner hry */
+        /* Hlavní mobilní okno hry */
         .game-screen {
             width: 360px;
             height: 640px;
-            background-color: #21cbf3; /* Světle modrá barva zdi */
+            background-color: #21cbf3; /* Modré pozadí koupelny */
             position: relative;
             display: flex;
             flex-direction: column;
-            border: 4px solid #000;
             overflow: hidden;
+            border: 4px solid #000;
         }
 
-        /* 1. Horní lišta (Coiny, Bary, Levely) */
-        .header-top {
-            width: 100%;
-            height: 60px;
+        /* Horní lišta (Coiny, Bary, Level) */
+        .top-status-bar {
+            height: 65px;
             background-color: #8bedfe;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0 10px;
-            box-sizing: border-box;
+            z-index: 10;
         }
+        .top-status-bar img { height: 50px; }
+        .stats-center { height: 40px !important; }
 
-        .header-top img {
-            height: 45px;
-        }
-
-        /* 2. Navigační lišta (Koupelna) */
-        .header-nav {
-            width: 100%;
+        /* Lišta místnosti (Koupelna) */
+        .room-indicator {
             height: 50px;
-            background-color: rgba(255, 255, 255, 0.6);
+            background-color: #ffffff;
             display: flex;
             justify-content: center;
             align-items: center;
+            border-bottom: 2px solid rgba(0,0,0,0.1);
+            z-index: 10;
         }
+        .room-indicator img { height: 35px; }
 
-        .header-nav img {
-            height: 35px;
-        }
-
-        /* Střední část pro Judy */
-        .main-game-area {
+        /* Hlavní herní plocha s Judy */
+        .character-area {
             flex-grow: 1;
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
         }
-
-        .judy {
-            width: 280px; /* Velikost aby nepřesahovala do lišt */
-            height: auto;
+        .judy-img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
         }
 
-        /* 3. Spodní lišta (Sprcha, Mýdlo, Obchod) */
-        .footer-menu {
-            width: 100%;
+        /* Spodní lišta (Sprcha, Mýdlo, Obchod) */
+        .bottom-nav {
             height: 110px;
-            background-color: #17a2c9; /* Tmavší modrá podlaha */
+            background-color: #17a2c9; /* Podlaha */
             display: flex;
             justify-content: space-around;
             align-items: center;
-            border-top: 2px solid rgba(0,0,0,0.1);
+            z-index: 10;
         }
-
-        .footer-item {
+        .nav-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            color: white;
-            font-weight: bold;
-            font-size: 14px;
+            text-decoration: none;
+            color: #000;
         }
+        .nav-item img { height: 70px; }
+        .nav-item span { font-weight: bold; font-size: 14px; margin-top: 2px; }
 
-        .footer-item img {
-            height: 65px;
-            margin-bottom: 5px;
-        }
-
-        /* Placeholder pro mýdlo, které jsi zatím neposlal */
+        /* Mýdlo (Placeholder dokud nebude obrázek) */
         .soap-placeholder {
-            width: 65px;
+            width: 70px;
             height: 45px;
             background: #4da6ff;
-            border: 2px solid #fff;
-            border-radius: 10px;
+            border: 3px solid #fff;
+            border-radius: 12px;
         }
     </style>
 </head>
 <body>
 
     <div class="game-screen">
-        <div class="header-top">
+        
+        <div class="top-status-bar">
             <img src="https://i.ibb.co/PzN3DvcK/20260515-194812557.png" alt="Coiny">
             
-            <img src="https://i.ibb.co/5W5Pt3yJ/image-3.jpg" alt="Bary" style="border: 1px solid #000;">
+            <img src="https://i.ibb.co/5W5Pt3yJ/image-3.jpg" class="stats-center" alt="Bary">
             
-            <img src="https://i.ibb.co/3YCdK3Sm/20260515-223551410.png" alt="Levely">
+            <img src="https://i.ibb.co/3YCdK3Sm/20260515-223551410.png" alt="Levels">
         </div>
 
-        <div class="header-nav">
-            <img src="https://i.ibb.co/ksjYDqyW/20260515-191953594.png" alt="Koupelna">
+        <div class="room-indicator">
+            <img src="https://i.ibb.co/ksjYDqyW/20260515-191953594.png" alt="Koupelna Bar">
         </div>
 
-        <div class="main-game-area">
-            <img src="https://i.ibb.co/B2PZvHtB/20260515-185922931.png" class="judy" alt="Judy Hopps">
+        <div class="character-area">
+            <img src="https://i.ibb.co/B2PZvHtB/20260515-185922931.png" class="judy-img" alt="Judy Hopps">
         </div>
 
-        <div class="footer-menu">
-            <div class="footer-item">
+        <div class="bottom-nav">
+            <div class="nav-item">
                 <img src="https://i.ibb.co/rJ9ZHV2/20260515-193346823.png" alt="Sprcha">
                 <span>Sprcha</span>
             </div>
 
-            <div class="footer-item">
+            <div class="nav-item">
                 <div class="soap-placeholder"></div>
-                <span style="margin-top: 5px;">Mýdlo</span>
+                <span>Mýdlo</span>
             </div>
 
-            <div class="footer-item">
+            <div class="nav-item">
                 <img src="https://i.ibb.co/fhwWK9J/20260515-193534046.png" alt="Obchod">
                 <span>Obchod</span>
             </div>
         </div>
+
     </div>
 
 </body>
