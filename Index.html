@@ -3,128 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pou Koupelna - Oprava</title>
+    <title>Pou Koupelna - Finální Verze</title>
     <style>
         body {
             margin: 0;
-            background-color: #222;
+            background-color: #333;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            overflow: hidden;
+            font-family: Arial, sans-serif;
         }
 
-        .game-screen {
+        .game-container {
             width: 360px;
             height: 640px;
-            background-color: #00d2ff; /* Jasně modré pozadí */
+            background-color: #00d2ff; /* Barva stěny v koupelně */
             position: relative;
-            border: 2px solid #000;
             display: flex;
             flex-direction: column;
+            border: 2px solid black;
         }
 
-        /* Horní světlá lišta (Coiny, Statistiky, Level) */
-        .top-status-bar {
-            background-color: #99f0ff; /* Světlejší modrá lišta nahoře */
-            height: 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        /* Horní sekce s ikonkami a levely */
+        .header {
+            background-color: #b3f0ff; /* Světlejší modrá nahoře */
             padding: 5px 10px;
-            z-index: 20;
-        }
-
-        /* Prostřední lišta (Foťák, Název, Otazník) */
-        .navigation-bar {
-            background-color: rgba(255, 255, 255, 0.5);
-            height: 50px;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            z-index: 20;
-        }
-
-        /* Postava Judy - posunul jsem ji níž, aby nezakrývala menu */
-        .character-container {
-            flex-grow: 1;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            padding-bottom: 20px;
             z-index: 10;
         }
 
-        .character-container img {
-            height: 380px; /* Upravená velikost, aby nepřesahovala */
-            width: auto;
-        }
-
-        /* Spodní podlaha */
-        .bottom-floor {
-            background-color: #00b8e6; /* Tmavší modrá podlaha */
-            height: 110px;
+        .top-row {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             align-items: center;
-            z-index: 20;
-        }
-
-        .icon-group {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: #000;
-            font-family: "Arial Black", sans-serif;
-            font-size: 14px;
-        }
-
-        .icon-group img {
-            height: 60px;
             margin-bottom: 5px;
         }
 
-        /* Pomocné třídy pro velikosti obrázků v lištách */
-        .stat-img { height: 35px; }
-        .coin-img { height: 40px; }
-        .room-img { height: 35px; }
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        /* Navigační lišta s názvem místnosti */
+        .nav-bar {
+            background-color: rgba(255, 255, 255, 0.4);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 8px 0;
+            z-index: 10;
+        }
+
+        /* Postava Judy */
+        .character-area {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .character-area img {
+            width: 260px;
+            z-index: 5;
+        }
+
+        /* Spodní lišta - Podlaha */
+        .floor-menu {
+            background-color: #00add8; /* Tmavší modrá podlaha */
+            height: 120px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding-bottom: 10px;
+            z-index: 10;
+        }
+
+        .menu-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: black;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .menu-item img {
+            height: 70px;
+            margin-bottom: 2px;
+        }
+
+        /* Pomocné styly pro obrázky v lištách */
+        .icon-coin { height: 45px; }
+        .icon-stats { height: 40px; }
+        .icon-level { height: 45px; }
+        .icon-nav { height: 35px; }
 
     </style>
 </head>
 <body>
 
-    <div class="game-screen">
-        
-        <div class="top-status-bar">
-            <img src="https://i.ibb.co/PzN3DvcK/20260515-194812557.png" class="coin-img" alt="Coiny">
-            <img src="https://i.ibb.co/5W5Pt3yJ/image-3.jpg" class="stat-img" alt="Statistiky">
-            <img src="https://i.ibb.co/3YCdK3Sm/20260515-223551410.png" class="stat-img" alt="Level">
+    <div class="game-container">
+        <div class="header">
+            <div class="top-row">
+                <img src="https://i.ibb.co/PzN3DvcK/20260515-194812557.png" class="icon-coin" alt="Coins">
+                <div class="stats-row">
+                    <img src="https://i.ibb.co/5W5Pt3yJ/image-3.jpg" class="icon-stats" alt="Stats">
+                </div>
+                <img src="https://i.ibb.co/3YCdK3Sm/20260515-223551410.png" class="icon-level" alt="Level">
+            </div>
         </div>
 
-        <div class="navigation-bar">
-            <div style="width: 40px;">📸</div> <img src="https://i.ibb.co/ksjYDqyW/20260515-191953594.png" class="room-img" alt="Koupelna">
-            <div style="width: 40px;">❓</div> </div>
+        <div class="nav-bar">
+            <span style="font-size: 24px;">📷</span>
+            <img src="https://i.ibb.co/ksjYDqyW/20260515-191953594.png" class="icon-nav" alt="Koupelna">
+            <span style="font-size: 24px;">❓</span>
+        </div>
 
-        <div class="character-container">
+        <div class="character-area">
             <img src="https://i.ibb.co/B2PZvHtB/20260515-185922931.png" alt="Judy">
         </div>
 
-        <div class="bottom-floor">
-            <div class="icon-group">
+        <div class="floor-menu">
+            <div class="menu-item">
                 <img src="https://i.ibb.co/rJ9ZHV2/20260515-193346823.png" alt="Sprcha">
                 <span>Sprcha</span>
             </div>
-            <div class="icon-group">
-                <div style="height: 60px; width: 60px; background: rgba(0,0,0,0.1); border-radius: 10px;"></div>
+            <div class="menu-item">
+                <div style="width: 70px; height: 70px; background: rgba(0,0,0,0.1); border-radius: 15px; margin-bottom: 2px;"></div>
                 <span>Mýdlo</span>
             </div>
-            <div class="icon-group">
+            <div class="menu-item">
                 <img src="https://i.ibb.co/fhwWK9J/20260515-193534046.png" alt="Obchod">
                 <span>Obchod</span>
             </div>
         </div>
-
     </div>
 
 </body>
