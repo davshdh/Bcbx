@@ -8,124 +8,114 @@
             margin: 0;
             padding: 0;
             background-color: #51C6FB;
-            font-family: sans-serif;
+            font-family: Arial, sans-serif;
             height: 100vh;
             display: flex;
             flex-direction: column;
             overflow: hidden;
         }
 
-        /* Horní sekce - Statusy, Coiny, Level */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 10;
-        }
-
-        .status-bar {
-            background-color: #C0E8F9; /* Světlejší modrá lišta */
+        /* Horní lišta se statusy - úplně nahoře */
+        .top-status-bar {
+            background-color: #C1E9F9;
+            height: 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 2px 5px;
-            height: 45px;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
+            padding: 0 5px;
+            border-bottom: 2px solid #333;
         }
 
-        /* Navigace pod statusy (Koupelna) */
-        .nav-bar {
+        .top-status-bar img {
+            height: 30px;
+        }
+
+        /* Navigační lišta s názvem místnosti a ikonami */
+        .room-nav {
             display: flex;
-            justify-content: center;
-            padding: 5px 0;
-            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 10px;
+            height: 50px;
         }
 
-        .nav-bar img {
-            height: 40px;
+        .room-nav img {
+            height: 45px;
         }
 
-        .status-bar img {
-            height: 35px;
-        }
-
-        /* Střed s Judy - musí být pod headerem */
-        .game-area {
+        /* Judy - uprostřed, ale hodně velká */
+        .character-container {
             flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 80px; /* Místo pro lišty nahoře */
-            margin-bottom: 100px; /* Místo pro lišty dole */
+            overflow: hidden;
         }
 
-        .judy-image {
-            height: 90%; 
+        .character-container img {
+            height: 110%; /* Zvětšení postavy aby byla dominantní */
             object-fit: contain;
         }
 
-        /* Spodní lišta - Nástroje a Obchod */
-        .footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
+        /* Spodní lišta nástrojů */
+        .tools-bar {
+            height: 100px;
             display: flex;
             justify-content: space-around;
             align-items: flex-end;
-            padding-bottom: 15px;
-            z-index: 10;
+            padding-bottom: 5px;
+            position: relative;
         }
 
-        .tool {
+        .tool-box {
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-decoration: none;
-            color: black;
-            font-weight: bold;
+            text-align: center;
             font-size: 14px;
+            font-weight: bold;
         }
 
-        .tool img {
-            height: 65px;
-            margin-bottom: 2px;
+        .tool-box img {
+            height: 60px; /* Menší ikony podle vzoru */
+        }
+
+        .tool-label {
+            margin-top: 2px;
         }
 
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <div class="status-bar">
-            <img src="https://i.ibb.co/PzN3DvcK/20260515-194812557.png" alt="Coiny">
-            <img src="https://i.ibb.co/5W5Pt3yJ/image-3.jpg" alt="Stats">
-            <img src="https://i.ibb.co/3YCdK3Sm/20260515-223551410.png" alt="Level">
-        </div>
-        <div class="nav-bar">
-            <img src="https://i.ibb.co/ksjYDqyW/20260515-191953594.png" alt="Koupelna">
-        </div>
+    <div class="top-status-bar">
+        <img src="https://i.ibb.co/PzN3DvcK/20260515-194812557.png" alt="Coiny">
+        <img src="https://i.ibb.co/5W5Pt3yJ/image-3.jpg" alt="Statusy">
+        <img src="https://i.ibb.co/3YCdK3Sm/20260515-223551410.png" alt="Level">
     </div>
 
-    <div class="game-area">
-        <img src="https://i.ibb.co/B2PZvHtB/20260515-185922931.png" alt="Judy" class="judy-image">
+    <div class="room-nav">
+        <img src="https://i.ibb.co/ksjYDqyW/20260515-191953594.png" alt="Navigace Koupelna" style="width: 100%; object-fit: contain;">
     </div>
 
-    <div class="footer">
-        <div class="tool">
+    <div class="character-container">
+        <img src="https://i.ibb.co/B2PZvHtB/20260515-185922931.png" alt="Judy Hoops">
+    </div>
+
+    <div class="tools-bar">
+        <div class="tool-box">
             <img src="https://i.ibb.co/rJ9ZHV2/20260515-193346823.png" alt="Sprcha">
-            <span>Sprcha</span>
+            <div class="tool-label">Sprcha</div>
         </div>
 
-        <div class="tool">
-            <div style="height: 65px;"></div>
-            <span>Mýdlo</span>
+        <div class="tool-box">
+            <div style="height: 60px;"></div>
+            <div class="tool-label">Mýdlo</div>
         </div>
 
-        <div class="tool">
+        <div class="tool-box">
             <img src="https://i.ibb.co/fhwWK9J/20260515-193534046.png" alt="Obchod">
-            <span>Obchod</span>
+            <div class="tool-label">Obchod</div>
         </div>
     </div>
 
