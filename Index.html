@@ -3,147 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pou Koupelna - Přesné seřazení</title>
+    <title>Pou Koupelna - Final Fix</title>
     <style>
         body {
             margin: 0;
-            background-color: #1a1a1a;
+            background-color: #333;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            font-family: Arial, sans-serif;
             overflow: hidden;
         }
 
-        .game-container {
+        .game-screen {
             width: 360px;
             height: 640px;
-            background-color: #21cbf3; /* Světle modrá stěna */
+            background-color: #21cbf3; /* Světle modrá zeď */
             position: relative;
-            display: flex;
-            flex-direction: column;
             border: 2px solid #000;
         }
 
-        /* 1. VRSTVA: Horní modrá lišta (v pozadí) */
+        /* 1. HORNÍ LIŠTA (Peníze, Bary, Level) */
         .status-bar {
-            background-color: #8bedfe;
+            position: absolute;
+            top: 0;
+            width: 100%;
             height: 55px;
+            background-color: #8bedfe;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0 10px;
-            z-index: 1; /* Pozadí */
+            box-sizing: border-box;
+            z-index: 2; /* Musí být pod ušima Judy */
         }
 
-        /* 2. VRSTVA: Bílá navigační lišta (v pozadí) */
+        /* 2. NAVIGAČNÍ LIŠTA (Koupelna) */
         .nav-bar {
-            background-color: #ffffff;
+            position: absolute;
+            top: 55px;
+            width: 100%;
             height: 50px;
+            background-color: white;
             display: flex;
             justify-content: space-around;
             align-items: center;
-            z-index: 1; /* Pozadí */
+            z-index: 2; /* Musí být pod ušima Judy */
         }
 
-        /* 3. VRSTVA: Judy Hopps (MUSÍ BÝT NAD LIŠTAMI) */
-        .character-overlay {
+        .nav-icon { font-size: 24px; font-weight: bold; color: #555; }
+        .room-title { font-weight: bold; font-size: 18px; }
+
+        /* 3. POSTAVA (JUDY) - Tady je to kouzlo */
+        .judy-container {
             position: absolute;
-            top: 60px; /* Aby uši začínaly nahoře přes lišty */
-            left: 0;
-            width: 100%;
-            height: 500px;
-            display: flex;
-            justify-content: center;
-            z-index: 10; /* Tady je ten trik, Judy je nad vším nahoře */
+            top: 30px; /* Uši začínají v horní liště */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            z-index: 5; /* Judy je nad horními lištami */
             pointer-events: none;
         }
 
-        .character-overlay img {
-            width: 280px;
+        .judy-container img {
+            width: 100%;
             height: auto;
         }
 
-        /* 4. VRSTVA: Spodní lišta (zcela nahoře, aby překryla nohy) */
-        .floor-bar {
+        /* 4. SPODNÍ PODLAHA */
+        .floor {
             position: absolute;
             bottom: 0;
             width: 100%;
-            height: 100px;
-            background-color: #17a2c9; /* Tmavší modrá podlaha */
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            z-index: 20; /* Nejvyšší vrstva, nohy jsou pod ní */
-            border-top: 1px solid rgba(0,0,0,0.1);
-        }
-
-        /* Stylování ikon */
-        .item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: black;
-            font-weight: bold;
-            font-size: 14px;
-            text-shadow: 1px 1px white;
-        }
-
-        .item img { height: 60px; margin-bottom: 2px; }
-        .coin-icon { height: 45px; }
-        .stat-icon { height: 35px; border: 1.5px solid black; }
-        .level-icon { height: 50px; }
-        .room-icon { height: 35px; }
-
-        /* Tlačítka v bílé liště */
-        .btn-mock {
-            font-size: 20px;
-            border: 1.5px solid #000;
-            padding: 2px 8px;
-            border-radius: 4px;
-            background: white;
-        }
-
-    </style>
-</head>
-<body>
-
-    <div class="game-container">
-        
-        <div class="status-bar">
-            <img src="https://i.ibb.co/PzN3DvcK/20260515-194812557.png" class="coin-icon">
-            <img src="https://i.ibb.co/5W5Pt3yJ/image-3.jpg" class="stat-icon">
-            <img src="https://i.ibb.co/3YCdK3Sm/20260515-223551410.png" class="level-icon">
-        </div>
-
-        <div class="nav-bar">
-            <div class="btn-mock">📷</div>
-            <div class="btn-mock">&lt;</div>
-            <img src="https://i.ibb.co/ksjYDqyW/20260515-191953594.png" class="room-icon">
-            <div class="btn-mock">&gt;</div>
-            <div class="btn-mock">?</div>
-        </div>
-
-        <div class="character-overlay">
-            <img src="https://i.ibb.co/B2PZvHtB/20260515-185922931.png" alt="Judy">
-        </div>
-
-        <div class="floor-bar">
-            <div class="item">
-                <img src="https://i.ibb.co/rJ9ZHV2/20260515-193346823.png" alt="Sprcha">
-                <span>Sprcha</span>
-            </div>
-            <div class="item">
-                <img src="https://i.ibb.co/0X65XN7/soap.png" style="width: 60px; height: 40px; background: #4da6ff; border: 2px solid #0059b3; border-radius: 10px;">
-                <span>Mýdlo</span>
-            </div>
-            <div class="item">
-                <img src="https://i.ibb.co/fhwWK9J/20260515-193534046.png" alt="Obchod">
-                <span>Obchod</span>
-            </div>
-        </div>
-
-    </div>
-
-</body>
-</html>
+            
