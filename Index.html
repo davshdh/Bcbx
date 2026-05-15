@@ -1,130 +1,133 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-    background-color: #51C6FB; /* Světle modré pozadí jako ve hře */
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    overflow: hidden;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #51C6FB;
+            font-family: sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
 
-  /* Horní lišta s ikonami stavu */
-  .top-bar {
-    background-color: rgba(255, 255, 255, 0.7);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px 10px;
-    height: 60px;
-  }
+        /* Horní sekce - Statusy, Coiny, Level */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+        }
 
-  .stats-icons {
-    display: flex;
-    gap: 5px;
-  }
+        .status-bar {
+            background-color: #C0E8F9; /* Světlejší modrá lišta */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2px 5px;
+            height: 45px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
 
-  .stats-icons img {
-    height: 45px;
-  }
+        /* Navigace pod statusy (Koupelna) */
+        .nav-bar {
+            display: flex;
+            justify-content: center;
+            padding: 5px 0;
+            width: 100%;
+        }
 
-  .coin-box img, .level-box img {
-    height: 50px;
-  }
+        .nav-bar img {
+            height: 40px;
+        }
 
-  /* Navigační lišta s nápisem Koupelna */
-  .nav-bar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-  }
+        .status-bar img {
+            height: 35px;
+        }
 
-  .nav-bar img {
-    height: 50px;
-  }
+        /* Střed s Judy - musí být pod headerem */
+        .game-area {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 80px; /* Místo pro lišty nahoře */
+            margin-bottom: 100px; /* Místo pro lišty dole */
+        }
 
-  /* Hlavní prostor pro Judy */
-  .game-scene {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-  }
+        .judy-image {
+            height: 90%; 
+            object-fit: contain;
+        }
 
-  .judy {
-    height: 70%; /* Velikost Judy na ploše */
-  }
+        /* Spodní lišta - Nástroje a Obchod */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            padding-bottom: 15px;
+            z-index: 10;
+        }
 
-  /* Spodní lišta s nástroji */
-  .bottom-bar {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-end;
-    padding-bottom: 20px;
-    height: 120px;
-  }
+        .tool {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            font-size: 14px;
+        }
 
-  .tool-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: black;
-    font-weight: bold;
-    font-size: 20px;
-  }
+        .tool img {
+            height: 65px;
+            margin-bottom: 2px;
+        }
 
-  .tool-item img {
-    height: 70px;
-    margin-bottom: 5px;
-  }
-</style>
+    </style>
 </head>
 <body>
 
-  <div class="top-bar">
-    <div class="coin-box">
-      <img src="https://i.ibb.co/PzN3DvcK/20260515-194812557.png" alt="Coiny">
-    </div>
-    
-    <div class="stats-icons">
-      <img src="https://i.ibb.co/5W5Pt3yJ/image-3.jpg" alt="Status bary">
-    </div>
-
-    <div class="level-box">
-      <img src="https://i.ibb.co/3YCdK3Sm/20260515-223551410.png" alt="Level">
-    </div>
-  </div>
-
-  <div class="nav-bar">
-    <img src="https://i.ibb.co/ksjYDqyW/20260515-191953594.png" alt="Koupelna lišta">
-  </div>
-
-  <div class="game-scene">
-    <img src="https://i.ibb.co/B2PZvHtB/20260515-185922931.png" alt="Judy Hoops" class="judy">
-  </div>
-
-  <div class="bottom-bar">
-    <div class="tool-item">
-      <img src="https://i.ibb.co/rJ9ZHV2/20260515-193346823.png" alt="Sprcha">
-      <span>Sprcha</span>
+    <div class="header">
+        <div class="status-bar">
+            <img src="https://i.ibb.co/PzN3DvcK/20260515-194812557.png" alt="Coiny">
+            <img src="https://i.ibb.co/5W5Pt3yJ/image-3.jpg" alt="Stats">
+            <img src="https://i.ibb.co/3YCdK3Sm/20260515-223551410.png" alt="Level">
+        </div>
+        <div class="nav-bar">
+            <img src="https://i.ibb.co/ksjYDqyW/20260515-191953594.png" alt="Koupelna">
+        </div>
     </div>
 
-    <div class="tool-item">
-       <div style="height: 70px; width: 70px;"></div> 
-       <span>Mýdlo</span>
+    <div class="game-area">
+        <img src="https://i.ibb.co/B2PZvHtB/20260515-185922931.png" alt="Judy" class="judy-image">
     </div>
 
-    <div class="tool-item">
-      <img src="https://i.ibb.co/fhwWK9J/20260515-193534046.png" alt="Obchod">
-      <span>Obchod</span>
+    <div class="footer">
+        <div class="tool">
+            <img src="https://i.ibb.co/rJ9ZHV2/20260515-193346823.png" alt="Sprcha">
+            <span>Sprcha</span>
+        </div>
+
+        <div class="tool">
+            <div style="height: 65px;"></div>
+            <span>Mýdlo</span>
+        </div>
+
+        <div class="tool">
+            <img src="https://i.ibb.co/fhwWK9J/20260515-193534046.png" alt="Obchod">
+            <span>Obchod</span>
+        </div>
     </div>
-  </div>
 
 </body>
 </html>
